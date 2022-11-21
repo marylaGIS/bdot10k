@@ -1,0 +1,3657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>bdot10k_dialog_base</class>
+ <widget class="QDialog" name="bdot10k_dialog_base">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>510</width>
+    <height>440</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>BDOT10k plugin</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>491</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>8</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Wybierz folder zapisu paczek .zip BDOT10k:</string>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>110</y>
+     <width>491</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="woj_02">
+    <attribute name="title">
+     <string>dolnośląskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_5">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_0206">
+        <property name="text">
+         <string>karkonoski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0204">
+        <property name="text">
+         <string>górowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_0207">
+        <property name="text">
+         <string>kamiennogórski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0202">
+        <property name="text">
+         <string>dzierżonowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0205">
+        <property name="text">
+         <string>jaworski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0203">
+        <property name="text">
+         <string>głogowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0201">
+        <property name="text">
+         <string>bolesławicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_0208">
+        <property name="text">
+         <string>kłodzki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_6">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>122</width>
+       <height>191</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_6">
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_0215">
+        <property name="text">
+         <string>oławski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_0214">
+        <property name="text">
+         <string>oleśnicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0212">
+        <property name="text">
+         <string>lwówecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0211">
+        <property name="text">
+         <string>lubiński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_0213">
+        <property name="text">
+         <string>milicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0209">
+        <property name="text">
+         <string>legnicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0210">
+        <property name="text">
+         <string>lubański</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_0216">
+        <property name="text">
+         <string>polkowicki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_9">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>121</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_9">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0217">
+        <property name="text">
+         <string>strzeliński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_0222">
+        <property name="text">
+         <string>wołowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0218">
+        <property name="text">
+         <string>średzki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0220">
+        <property name="text">
+         <string>trzebnicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0219">
+        <property name="text">
+         <string>świdnicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0221">
+        <property name="text">
+         <string>wałbrzyski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_0223">
+        <property name="text">
+         <string>wrocławski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_7">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>121</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_7">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0226">
+        <property name="text">
+         <string>złotoryjski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0224">
+        <property name="text">
+         <string>ząbkowicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_0265">
+        <property name="text">
+         <string>Wałbrzych</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0225">
+        <property name="text">
+         <string>zgorzelecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0261">
+        <property name="text">
+         <string>Jelenia Góra</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0262">
+        <property name="text">
+         <string>Legnica</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_0264">
+        <property name="text">
+         <string>Wrocław</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_04">
+    <attribute name="title">
+     <string>kujawsko-pomorskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0404">
+        <property name="text">
+         <string>chełmiński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0403">
+        <property name="text">
+         <string>bydgoski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0405">
+        <property name="text">
+         <string>golubsko-dobrzyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0401">
+        <property name="text">
+         <string>aleksandrowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0402">
+        <property name="text">
+         <string>brodnicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_0406">
+        <property name="text">
+         <string>grudziądzki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>121</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0408">
+        <property name="text">
+         <string>lipnowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0411">
+        <property name="text">
+         <string>radziejowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0409">
+        <property name="text">
+         <string>mogileński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0410">
+        <property name="text">
+         <string>nakielski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0407">
+        <property name="text">
+         <string>inowrocławski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_0412">
+        <property name="text">
+         <string>rypiński</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>121</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0414">
+        <property name="text">
+         <string>świecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0417">
+        <property name="text">
+         <string>wąbrzeski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0415">
+        <property name="text">
+         <string>toruński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0416">
+        <property name="text">
+         <string>tucholski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0413">
+        <property name="text">
+         <string>sępoleński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_0418">
+        <property name="text">
+         <string>włocławski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>121</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0464">
+        <property name="text">
+         <string>Włocławski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0462">
+        <property name="text">
+         <string>Grudziądz</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0419">
+        <property name="text">
+         <string>żniński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0461">
+        <property name="text">
+         <string>Bydgoszcz</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0463">
+        <property name="text">
+         <string>Toruń</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_06">
+    <attribute name="title">
+     <string>lubelskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_8">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_8">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0604">
+        <property name="text">
+         <string>hrubieszowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0603">
+        <property name="text">
+         <string>chełmski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0605">
+        <property name="text">
+         <string>janowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0601">
+        <property name="text">
+         <string>bialski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0602">
+        <property name="text">
+         <string>biłgorajski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_0606">
+        <property name="text">
+         <string>krasnostawski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_10">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>121</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_10">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0614">
+        <property name="text">
+         <string>puławski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0617">
+        <property name="text">
+         <string>świdnicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0615">
+        <property name="text">
+         <string>radzyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0616">
+        <property name="text">
+         <string>rycki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0613">
+        <property name="text">
+         <string>parczewski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_0618">
+        <property name="text">
+         <string>tomaszowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_11">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>121</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_11">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0608">
+        <property name="text">
+         <string>lubartowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0611">
+        <property name="text">
+         <string>łukowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0609">
+        <property name="text">
+         <string>lubelski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0610">
+        <property name="text">
+         <string>łęczyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0607">
+        <property name="text">
+         <string>kraśnicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_0612">
+        <property name="text">
+         <string>opolski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_12">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>121</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_12">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0620">
+        <property name="text">
+         <string>zamojski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_0663">
+        <property name="text">
+         <string>Lublin</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0661">
+        <property name="text">
+         <string>Biała Podlaska</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0662">
+        <property name="text">
+         <string>Chełm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0619">
+        <property name="text">
+         <string>włodawski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_0664">
+        <property name="text">
+         <string>Zamość</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_08">
+    <attribute name="title">
+     <string>lubuskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_13">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>131</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_13">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0807">
+        <property name="text">
+         <string>sulęciński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0808">
+        <property name="text">
+         <string>świebodziński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0806">
+        <property name="text">
+         <string>strzekecko-drezdencki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0805">
+        <property name="text">
+         <string>słubicki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_15">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>121</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_15">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0802">
+        <property name="text">
+         <string>krośnieński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0801">
+        <property name="text">
+         <string>gorzowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_0804">
+        <property name="text">
+         <string>nowosolski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0803">
+        <property name="text">
+         <string>międzyrzecki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_16">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>0</y>
+       <width>111</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_16">
+      <item row="2" column="1">
+       <widget class="QCheckBox" name="pow_0810">
+        <property name="text">
+         <string>żegański</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="pow_0809">
+        <property name="text">
+         <string>zielonogórski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="pow_0812">
+        <property name="text">
+         <string>wchowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_64">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>121</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_49">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_0861">
+        <property name="text">
+         <string>Gorzów Wielkopolski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_0811">
+        <property name="text">
+         <string>żarski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_0862">
+        <property name="text">
+         <string>Zielona Góra</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_10">
+    <attribute name="title">
+     <string>łódzkie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_14">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_14">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1003">
+        <property name="text">
+         <string>łaski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1002">
+        <property name="text">
+         <string>kutnowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1004">
+        <property name="text">
+         <string>łęczycki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1001">
+        <property name="text">
+         <string>bełchatowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1021">
+        <property name="text">
+         <string>brzeziński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1005">
+        <property name="text">
+         <string>łowicki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_17">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>121</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_17">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1007">
+        <property name="text">
+         <string>opoczyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1010">
+        <property name="text">
+         <string>piotrkowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1008">
+        <property name="text">
+         <string>pabianicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1009">
+        <property name="text">
+         <string>pajęczański</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1006">
+        <property name="text">
+         <string>łódzki wschodni</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1011">
+        <property name="text">
+         <string>poddębicki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_18">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>123</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_18">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1019">
+        <property name="text">
+         <string>zduńkowolski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1062">
+        <property name="text">
+         <string>Piotrków Trybunalski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1020">
+        <property name="text">
+         <string>zgierski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1061">
+        <property name="text">
+         <string>Łódź</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1018">
+        <property name="text">
+         <string>wieruszowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1063">
+        <property name="text">
+         <string>Skierniewice</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_19">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>121</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_19">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1013">
+        <property name="text">
+         <string>rawski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1016">
+        <property name="text">
+         <string>tomaszowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1014">
+        <property name="text">
+         <string>sieradzki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1015">
+        <property name="text">
+         <string>skierniewicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1012">
+        <property name="text">
+         <string>radomszczański</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1017">
+        <property name="text">
+         <string>wieluński</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_12">
+    <attribute name="title">
+     <string>małopolskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_20">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>123</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_20">
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1263">
+        <property name="text">
+         <string>Tarnów</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1219">
+        <property name="text">
+         <string>wielicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow1262">
+        <property name="text">
+         <string>Nowy Sącz</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1261">
+        <property name="text">
+         <string>Kraków</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1218">
+        <property name="text">
+         <string>wadowicki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_21">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_21">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1204">
+        <property name="text">
+         <string>dąbrowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1203">
+        <property name="text">
+         <string>chrzanowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1205">
+        <property name="text">
+         <string>gorlicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1201">
+        <property name="text">
+         <string>bocheński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1202">
+        <property name="text">
+         <string>brzeski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1206">
+        <property name="text">
+         <string>krakowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_22">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>121</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_22">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1208">
+        <property name="text">
+         <string>miechowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1211">
+        <property name="text">
+         <string>nowotarski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1209">
+        <property name="text">
+         <string>myślenicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1210">
+        <property name="text">
+         <string>nowosądecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1207">
+        <property name="text">
+         <string>limanowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1212">
+        <property name="text">
+         <string>olkuski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_23">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>121</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_23">
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1217">
+        <property name="text">
+         <string>tatrzański</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1214">
+        <property name="text">
+         <string>proszowicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1215">
+        <property name="text">
+         <string>suski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1216">
+        <property name="text">
+         <string>tarnowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1213">
+        <property name="text">
+         <string>oświęcimski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_14">
+    <attribute name="title">
+     <string>mazowieckie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_24">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>249</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_28">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1403">
+        <property name="text">
+         <string>garwoliński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1401">
+        <property name="text">
+         <string>białobrzeski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_1408">
+        <property name="text">
+         <string>legionowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1402">
+        <property name="text">
+         <string>ciechanowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1405">
+        <property name="text">
+         <string>grodziski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1406">
+        <property name="text">
+         <string>grójecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_1407">
+        <property name="text">
+         <string>kozienicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1404">
+        <property name="text">
+         <string>gostyniński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_1409">
+        <property name="text">
+         <string>lipski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QCheckBox" name="pow_1410">
+        <property name="text">
+         <string>łosicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QCheckBox" name="pow_1411">
+        <property name="text">
+         <string>makowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_25">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>122</width>
+       <height>249</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_29">
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_1420">
+        <property name="text">
+         <string>płoński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1414">
+        <property name="text">
+         <string>nowodworski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1415">
+        <property name="text">
+         <string>ostrołęcki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1413">
+        <property name="text">
+         <string>mławski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1412">
+        <property name="text">
+         <string>miński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1416">
+        <property name="text">
+         <string>ostrowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_1419">
+        <property name="text">
+         <string>płocki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QCheckBox" name="pow_1421">
+        <property name="text">
+         <string>pruszkowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1417">
+        <property name="text">
+         <string>otwocki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_1418">
+        <property name="text">
+         <string>piaseczyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0">
+       <widget class="QCheckBox" name="pow_1422">
+        <property name="text">
+         <string>przasnyski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_26">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>124</width>
+       <height>226</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_30">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1423">
+        <property name="text">
+         <string>przysuski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1424">
+        <property name="text">
+         <string>pułtuski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1427">
+        <property name="text">
+         <string>sierpecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_1430">
+        <property name="text">
+         <string>szydłowiecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_1429">
+        <property name="text">
+         <string>sokołowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1428">
+        <property name="text">
+         <string>sochaczewski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1425">
+        <property name="text">
+         <string>radomski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_1432">
+        <property name="text">
+         <string>warszawski zachodni</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1426">
+        <property name="text">
+         <string>siedlecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QCheckBox" name="pow_1433">
+        <property name="text">
+         <string>węgrowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_27">
+     <property name="geometry">
+      <rect>
+       <x>363</x>
+       <y>0</y>
+       <width>121</width>
+       <height>226</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_31">
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1438">
+        <property name="text">
+         <string>żyrardowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1461">
+        <property name="text">
+         <string>Ostrołęka</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_1463">
+        <property name="text">
+         <string>Radom</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QCheckBox" name="pow_1465">
+        <property name="text">
+         <string>Warszawa</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_1462">
+        <property name="text">
+         <string>Płock</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1435">
+        <property name="text">
+         <string>wyszkowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_1464">
+        <property name="text">
+         <string>Siedlce</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1437">
+        <property name="text">
+         <string>żuromiński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1436">
+        <property name="text">
+         <string>zwoleński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1434">
+        <property name="text">
+         <string>wołomiński</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_16">
+    <attribute name="title">
+     <string>opolskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_28">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>141</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_32">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1603">
+        <property name="text">
+         <string>kędzierzyńsko-kozielski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1601">
+        <property name="text">
+         <string>brzeski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1602">
+        <property name="text">
+         <string>głubczycki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_29">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>0</y>
+       <width>101</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_33">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1608">
+        <property name="text">
+         <string>oleski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1607">
+        <property name="text">
+         <string>nyski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1609">
+        <property name="text">
+         <string>opolski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_30">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>0</y>
+       <width>121</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_34">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1604">
+        <property name="text">
+         <string>kluczborski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1605">
+        <property name="text">
+         <string>krapkowicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1606">
+        <property name="text">
+         <string>namysłowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_31">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>123</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_35">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1610">
+        <property name="text">
+         <string>prudnicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1661">
+        <property name="text">
+         <string>Opole</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1611">
+        <property name="text">
+         <string>strzelecki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_18">
+    <attribute name="title">
+     <string>pokarpackie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_32">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>0</y>
+       <width>111</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_36">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1862">
+        <property name="text">
+         <string>Przemyśl</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1820">
+        <property name="text">
+         <string>tarnobrzeski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1861">
+        <property name="text">
+         <string>Krosno</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1863">
+        <property name="text">
+         <string>Rzeszów</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1819">
+        <property name="text">
+         <string>strzyżowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1864">
+        <property name="text">
+         <string>Tarnobrzseg</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_33">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_37">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1804">
+        <property name="text">
+         <string>jarosławski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1805">
+        <property name="text">
+         <string>jasielski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1801">
+        <property name="text">
+         <string>bieszczadzki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1802">
+        <property name="text">
+         <string>brzozowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1806">
+        <property name="text">
+         <string>kolbuszowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1803">
+        <property name="text">
+         <string>dębicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_1807">
+        <property name="text">
+         <string>krośnieński</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_34">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>121</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_38">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1810">
+        <property name="text">
+         <string>łańcucki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1821">
+        <property name="text">
+         <string>leski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1809">
+        <property name="text">
+         <string>lubaczowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1808">
+        <property name="text">
+         <string>leżajski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1811">
+        <property name="text">
+         <string>mielecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1812">
+        <property name="text">
+         <string>niżański</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_35">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>141</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_39">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1815">
+        <property name="text">
+         <string>ropczycko-sędziszowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_1817">
+        <property name="text">
+         <string>sanocki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1814">
+        <property name="text">
+         <string>przeworski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_1816">
+        <property name="text">
+         <string>rzeszowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_1818">
+        <property name="text">
+         <string>stalowolski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_1813">
+        <property name="text">
+         <string>przemyski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_20">
+    <attribute name="title">
+     <string>podlaskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_36">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>123</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_40">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2014">
+        <property name="text">
+         <string>zambrowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2061">
+        <property name="text">
+         <string>Białystok</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2062">
+        <property name="text">
+         <string>Łomża</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2065">
+        <property name="text">
+         <string>Suwałki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_37">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>121</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_41">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2006">
+        <property name="text">
+         <string>koleński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2008">
+        <property name="text">
+         <string>moniecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2007">
+        <property name="text">
+         <string>łomżyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2009">
+        <property name="text">
+         <string>sejeński</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_38">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>121</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_42">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2011">
+        <property name="text">
+         <string>sokólski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2012">
+        <property name="text">
+         <string>suwalski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2010">
+        <property name="text">
+         <string>siemiatycki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2013">
+        <property name="text">
+         <string>wysokomazowiecki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_39">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>121</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_43">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2003">
+        <property name="text">
+         <string>bielski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2002">
+        <property name="text">
+         <string>białostocki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2004">
+        <property name="text">
+         <string>grajewski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2001">
+        <property name="text">
+         <string>augustowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2005">
+        <property name="text">
+         <string>hajnowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_22">
+    <attribute name="title">
+     <string>pomorskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_40">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>121</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_44">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2208">
+        <property name="text">
+         <string>lęborski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2206">
+        <property name="text">
+         <string>kościerski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2210">
+        <property name="text">
+         <string>nowodworski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2209">
+        <property name="text">
+         <string>malborski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2207">
+        <property name="text">
+         <string>kwidzyński</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_41">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>121</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_45">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2213">
+        <property name="text">
+         <string>starogardzki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2216">
+        <property name="text">
+         <string>sztumski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2214">
+        <property name="text">
+         <string>tczewski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2212">
+        <property name="text">
+         <string>słupski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2211">
+        <property name="text">
+         <string>pucki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_42">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_46">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2203">
+        <property name="text">
+         <string>człuchowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2201">
+        <property name="text">
+         <string>bytnowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2205">
+        <property name="text">
+         <string>kartuski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2204">
+        <property name="text">
+         <string>gdański</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2202">
+        <property name="text">
+         <string>chojnicki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_43">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>121</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_47">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2261">
+        <property name="text">
+         <string>Gdańsk</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2263">
+        <property name="text">
+         <string>Słupsk</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2262">
+        <property name="text">
+         <string>Gdynia</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2264">
+        <property name="text">
+         <string>Sopot</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2215">
+        <property name="text">
+         <string>wejherowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_24">
+    <attribute name="title">
+     <string>śląskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_44">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>203</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_48">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2403">
+        <property name="text">
+         <string>cieszyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2404">
+        <property name="text">
+         <string>częstochowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2414">
+        <property name="text">
+         <string>bieruńsko-lędziński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2402">
+        <property name="text">
+         <string>bielski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_2407">
+        <property name="text">
+         <string>lubliniecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_2406">
+        <property name="text">
+         <string>kłobucki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2401">
+        <property name="text">
+         <string>będziński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_2405">
+        <property name="text">
+         <string>gliwicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_2408">
+        <property name="text">
+         <string>mikołowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_45">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>122</width>
+       <height>203</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_50">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2412">
+        <property name="text">
+         <string>rybnicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2413">
+        <property name="text">
+         <string>tarnogórski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2411">
+        <property name="text">
+         <string>raciborski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2410">
+        <property name="text">
+         <string>pszczyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_2417">
+        <property name="text">
+         <string>żywiecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_2416">
+        <property name="text">
+         <string>zawierciański</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2409">
+        <property name="text">
+         <string>myszkowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_2415">
+        <property name="text">
+         <string>wodzisławski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_2461">
+        <property name="text">
+         <string>Bielsko-Biała</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_46">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>122</width>
+       <height>203</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_51">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2465">
+        <property name="text">
+         <string>Dąbrowa Górnicza</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2466">
+        <property name="text">
+         <string>Gliwice</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2464">
+        <property name="text">
+         <string>Częstochowa</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2463">
+        <property name="text">
+         <string>Chorzów</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_2469">
+        <property name="text">
+         <string>Katowice</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_2468">
+        <property name="text">
+         <string>Jaworzno</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2462">
+        <property name="text">
+         <string>Bytom</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_2467">
+        <property name="text">
+         <string>Jastrzębie-Zdrój</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_2470">
+        <property name="text">
+         <string>Mysłowice</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_47">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>123</width>
+       <height>203</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_52">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2474">
+        <property name="text">
+         <string>Siemianowice Śląskie</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2475">
+        <property name="text">
+         <string>Sosnowiec</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2473">
+        <property name="text">
+         <string>Rybnik</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2472">
+        <property name="text">
+         <string>Ruda Śląska</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_2478">
+        <property name="text">
+         <string>Zabrze</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_2477">
+        <property name="text">
+         <string>Tychy</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2471">
+        <property name="text">
+         <string>Piekary Śląskie</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_2476">
+        <property name="text">
+         <string>Świętochłowice</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_2479">
+        <property name="text">
+         <string>Żory</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_26">
+    <attribute name="title">
+     <string>świętokrzyskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_48">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>123</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_24">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2613">
+        <property name="text">
+         <string>włoszczowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2661">
+        <property name="text">
+         <string>Kielce</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2612">
+        <property name="text">
+         <string>staszowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_49">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_25">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2602">
+        <property name="text">
+         <string>jędrzejowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2603">
+        <property name="text">
+         <string>kazimierski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2604">
+        <property name="text">
+         <string>kielecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2601">
+        <property name="text">
+         <string>buski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_50">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>121</width>
+       <height>65</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_26">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2610">
+        <property name="text">
+         <string>skarżyski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2609">
+        <property name="text">
+         <string>sandomierski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2611">
+        <property name="text">
+         <string>starachowicki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_51">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>121</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_27">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2607">
+        <property name="text">
+         <string>ostrowiecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2605">
+        <property name="text">
+         <string>konecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2606">
+        <property name="text">
+         <string>opatowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2608">
+        <property name="text">
+         <string>pińczowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_28">
+    <attribute name="title">
+     <string>warmińsko-mazurskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_52">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>123</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_53">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2861">
+        <property name="text">
+         <string>Elbląg</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2817">
+        <property name="text">
+         <string>szczycieński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2816">
+        <property name="text">
+         <string>piski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2819">
+        <property name="text">
+         <string>węgorzewski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2862">
+        <property name="text">
+         <string>Olsztyn</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_53">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_54">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2802">
+        <property name="text">
+         <string>braniewski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2805">
+        <property name="text">
+         <string>ełcki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2804">
+        <property name="text">
+         <string>elbląski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2803">
+        <property name="text">
+         <string>działdowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2801">
+        <property name="text">
+         <string>bartoszycki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_2806">
+        <property name="text">
+         <string>giżycki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_54">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>121</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_55">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2813">
+        <property name="text">
+         <string>olecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2811">
+        <property name="text">
+         <string>nidzicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2812">
+        <property name="text">
+         <string>nowomiejski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2814">
+        <property name="text">
+         <string>olsztyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2815">
+        <property name="text">
+         <string>ostródzki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_55">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>121</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_56">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_2807">
+        <property name="text">
+         <string>iławski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_2818">
+        <property name="text">
+         <string>gołdapski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_2808">
+        <property name="text">
+         <string>kętrzyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_2809">
+        <property name="text">
+         <string>lidzbarski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_2810">
+        <property name="text">
+         <string>mrągowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_30">
+    <attribute name="title">
+     <string>wielkopolskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_56">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>141</width>
+       <height>203</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_57">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_3004">
+        <property name="text">
+         <string>gostyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_3005">
+        <property name="text">
+         <string>grodziski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_3003">
+        <property name="text">
+         <string>gnieźnieński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_3002">
+        <property name="text">
+         <string>czarnkowsko-trzcianecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_3008">
+        <property name="text">
+         <string>kępiński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_3007">
+        <property name="text">
+         <string>kaliski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_3001">
+        <property name="text">
+         <string>chodzieski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_3006">
+        <property name="text">
+         <string>jarociński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_3009">
+        <property name="text">
+         <string>kolski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_57">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>0</y>
+       <width>122</width>
+       <height>203</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_58">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_3022">
+        <property name="text">
+         <string>rawicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_3023">
+        <property name="text">
+         <string>słupecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_3021">
+        <property name="text">
+         <string>poznański</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_3020">
+        <property name="text">
+         <string>pleszewski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_3026">
+        <property name="text">
+         <string>śremski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_3025">
+        <property name="text">
+         <string>średzki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_3019">
+        <property name="text">
+         <string>pilski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_3024">
+        <property name="text">
+         <string>szamotulski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_3027">
+        <property name="text">
+         <string>turecki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_58">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>0</y>
+       <width>122</width>
+       <height>203</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_59">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_3013">
+        <property name="text">
+         <string>leszczyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_3014">
+        <property name="text">
+         <string>międzychodzki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_3012">
+        <property name="text">
+         <string>krotoszyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_3011">
+        <property name="text">
+         <string>kościański</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_3017">
+        <property name="text">
+         <string>ostrowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_3016">
+        <property name="text">
+         <string>obornicki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_3010">
+        <property name="text">
+         <string>koniński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_3015">
+        <property name="text">
+         <string>nowotymski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QCheckBox" name="pow_3018">
+        <property name="text">
+         <string>ostrzeszowski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_59">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>0</y>
+       <width>123</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_60">
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_3061">
+        <property name="text">
+         <string>Kalisz</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_3031">
+        <property name="text">
+         <string>złotowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_3030">
+        <property name="text">
+         <string>wrzesiński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_3029">
+        <property name="text">
+         <string>wolsztyński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="pow_3064">
+        <property name="text">
+         <string>Poznań</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="pow_3063">
+        <property name="text">
+         <string>Leszno</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_3028">
+        <property name="text">
+         <string>wągrowiecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_3062">
+        <property name="text">
+         <string>Konin</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="woj_32">
+    <attribute name="title">
+     <string>zachodniopomorskie</string>
+    </attribute>
+    <widget class="QWidget" name="gridLayoutWidget_60">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>0</y>
+       <width>121</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_61">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_3213">
+        <property name="text">
+         <string>sławieński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_3211">
+        <property name="text">
+         <string>policki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_3212">
+        <property name="text">
+         <string>pyrzycki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_3214">
+        <property name="text">
+         <string>stargardzki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_3215">
+        <property name="text">
+         <string>szczeciniecki</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_61">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>122</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_62">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_3202">
+        <property name="text">
+         <string>choszczeński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_3205">
+        <property name="text">
+         <string>gryficki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_3204">
+        <property name="text">
+         <string>goleniowski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_3203">
+        <property name="text">
+         <string>drawski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_3201">
+        <property name="text">
+         <string>białogardzki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="pow_3206">
+        <property name="text">
+         <string>gryfiński</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_62">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>0</y>
+       <width>123</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_63">
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_3262">
+        <property name="text">
+         <string>Szczecin</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_3217">
+        <property name="text">
+         <string>wałecki</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_3216">
+        <property name="text">
+         <string>świdwiński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_3261">
+        <property name="text">
+         <string>Koszalin</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_3263">
+        <property name="text">
+         <string>Świnoujście</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget_63">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>0</y>
+       <width>121</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_64">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_3208">
+        <property name="text">
+         <string>kołobrzeski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="pow_3207">
+        <property name="text">
+         <string>kamieński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_3209">
+        <property name="text">
+         <string>koszaliński</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pow_3218">
+        <property name="text">
+         <string>łobeski</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="pow_3210">
+        <property name="text">
+         <string>myśliborski</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="download_btn">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>410</y>
+     <width>241</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pobierz</string>
+   </property>
+  </widget>
+  <widget class="QgsFileWidget" name="dwnl_path">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>491</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="storageMode">
+    <enum>QgsFileWidget::GetDirectory</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="clear_cb">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>410</y>
+     <width>231</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Wyczyść wybór</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>491</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>8</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Wybierz format danych BDOT10k:</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="rbtnSHP">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>82</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>SHP</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="rbtnGML">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>80</y>
+     <width>82</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GML</string>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QgsFileWidget</class>
+   <extends>QWidget</extends>
+   <header>qgsfilewidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

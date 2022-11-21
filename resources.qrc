@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/bdot10k" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
