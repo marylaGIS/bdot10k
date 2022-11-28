@@ -11,9 +11,9 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>BDOT10k plugin</string>
+   <string>BDOT10k</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_1">
    <property name="geometry">
     <rect>
      <x>10</x>
