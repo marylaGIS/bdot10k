@@ -56,7 +56,7 @@ class BDOT10k:
 
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&BDOT10k plugin')
+        self.menu = self.tr(u'&BDOT10k')
 
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
@@ -120,7 +120,7 @@ class BDOT10k:
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
             self.iface.removePluginMenu(
-                self.tr(u'&BDOT10k plugin'),
+                self.tr(u'&BDOT10k'),
                 action)
             self.iface.removeToolBarIcon(action)  
 
