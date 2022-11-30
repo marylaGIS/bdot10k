@@ -19,8 +19,8 @@ about=[PL] Wtyczka umożliwia pobranie danych BDOT10k.
     Counties are selected by checking the checkboxes
     grouped by voivodships.
 
-tracker=https://github.com/marylaGIS/bdot10k_plugin/issues
-repository=https://github.com/marylaGIS/bdot10k_plugin
+tracker=https://github.com/marylaGIS/bdot10k/issues
+repository=https://github.com/marylaGIS/bdot10k
 # End of mandatory metadata
 
 # Recommended items:
