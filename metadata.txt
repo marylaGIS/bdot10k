@@ -32,7 +32,7 @@ hasProcessingProvider=no
 # Tags are comma separated with spaces allowed
 tags=bdot10k, gugik, polska, poland, otwarte dane, open data, marylaGIS
 
-homepage=https://marylagis.github.io/qgisplugins/bdot10k.html
+homepage=https://marylagis.github.io/
 category=Plugins
 icon=icon.png
 # experimental flag
