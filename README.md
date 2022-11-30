@@ -1,4 +1,8 @@
-# bdot10k_plugin
-QGIS plugin for downloading BDOT10k data
+# BDOT10k ![icon](./icon.png)
 
-![bdot10k](https://drive.google.com/uc?export=view&id=1iLcDuQlu7iCwFM4Ia5_1UnHdD9hfTJX1)
+Wtyczka umożliwiająca pobieranie danych BDOT10k z poziomu QGISa.
+
+Plugin for downloading BDOT10k data (Database of Topographic Objects) directly from QGIS.
+
+
+![bdot10k](https://drive.google.com/uc?export=view&id=1w3J5dKC2LW83dgwIadl4q51yUPYPRCY3)
