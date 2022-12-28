@@ -1145,7 +1145,7 @@
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QCheckBox" name="pow1262">
+       <widget class="QCheckBox" name="pow_1262">
         <property name="text">
          <string>Nowy Sącz</string>
         </property>
@@ -2071,7 +2071,7 @@
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QCheckBox" name="pow_2065">
+       <widget class="QCheckBox" name="pow_2063">
         <property name="text">
          <string>Suwałki</string>
         </property>
