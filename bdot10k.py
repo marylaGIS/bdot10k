@@ -132,15 +132,15 @@ class BDOT10k:
         if self.first_start == True:
             self.first_start = False
             self.dlg = BDOT10kDialogBase()
-            self.dlg.download_btn.clicked.connect(self.download_bdot10k_zip)
+            self.dlg.btnDwnl.clicked.connect(self.download_bdot10k_zip)
         
         # show the dialog
         self.dlg.show()
 
-        self.dlg.clear_cb.clicked.connect(self.clear_checkboxes)
+        self.dlg.btnClearCb.clicked.connect(self.clear_checkboxes)
     
     def download_bdot10k_zip(self):
-        downloadPath = self.dlg.dwnl_path.filePath()
+        downloadPath = self.dlg.dwnlPath.filePath()
 
         # check which data type has been selected
         if self.dlg.rbtnSHP.isChecked():
