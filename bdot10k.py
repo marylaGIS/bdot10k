@@ -178,10 +178,10 @@ class BDOT10k:
 
     def check_dwnl_path(self, downloadPath):
         if not downloadPath:
-            QMessageBox.critical(self.dlg, "Błąd", "Wskaż lokalizację pobierania.")
+            QMessageBox.critical(None, "Błąd", "Wskaż lokalizację pobierania.")
             return False
         elif not os.path.exists(downloadPath):
-            QMessageBox.critical(self.dlg, "Błąd", "Podana lokalizacja nie istnieje.")
+            QMessageBox.critical(None, "Błąd", "Podana lokalizacja nie istnieje.")
             return False
         else:
             return True
