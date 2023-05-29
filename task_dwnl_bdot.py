@@ -8,23 +8,23 @@ MESSAGE_CATEGORY = "BDOT10k"
 class DownloadBdotTask(QgsTask):
     """Subclass task for dwonloading BDOT10k"""
 
-    def __init__(self, description, downloadPath, bdot10kDataFormat, checkBoxList, iface):
+    def __init__(self, description, downloadPath, bdot10kDataFormat, powiatyTerytList, iface):
         super().__init__(description, QgsTask.CanCancel)
         self.exception = None
         self.iface = iface
         self.downloadPath = downloadPath
         self.bdot10kDataFormat = bdot10kDataFormat
-        self.checkBoxList = checkBoxList
+        self.powiatyTerytList = powiatyTerytList
 
     def run(self):
         downloadPath=self.downloadPath
         bdot10kDataFormat=self.bdot10kDataFormat
-        checkBoxList=self.checkBoxList
+        powiatyTerytList=self.powiatyTerytList
 
-        QgsMessageLog.logMessage(f"Rozpoczęto pobieranie BDOT10k dla: {checkBoxList}",
+        QgsMessageLog.logMessage(f"Rozpoczęto pobieranie BDOT10k dla: {powiatyTerytList}",
                                 MESSAGE_CATEGORY, Qgis.Info)
 
-        for teryt in checkBoxList:
+        for teryt in powiatyTerytList:
             if bdot10kDataFormat == 'SHP':
                 url = f'https://opendata.geoportal.gov.pl/bdot10k/{bdot10kDataFormat}/{teryt[:2]}/{teryt}_{bdot10kDataFormat}.zip'
             elif bdot10kDataFormat == 'GML':
