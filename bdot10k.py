@@ -158,7 +158,7 @@ class BDOT10k:
         # use separate funciotn for checking if dwnl path is correct
         if self.check_dwnl_path(downloadPath) == True and len(checkBoxList) >= 1:
             QgsMessageLog.logMessage(f'Lokalizacja pobierania: {downloadPath}', 'BDOT10k', level=Qgis.MessageLevel.Info)
-            QgsMessageLog.logMessage('Pobieranie paczek dla powiatów: ' + str(sorted(checkBoxList)), 'BDOT10k', level=Qgis.MessageLevel.Info)
+            QgsMessageLog.logMessage('Lista teryt wybranych powiatów: ' + str(sorted(checkBoxList)), 'BDOT10k', level=Qgis.MessageLevel.Info)
 
             # use QgsTask class for downloading BDOT10k in the background
             task = DownloadBdotTask(
