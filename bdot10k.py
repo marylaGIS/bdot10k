@@ -16,12 +16,14 @@ from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QFileDialog, QMessageBox, QCheckBox
 
-from qgis.core import Qgis, QgsMessageLog, QgsApplication
+from qgis.core import (Qgis, QgsMessageLog, QgsApplication,
+                       QgsMapLayerProxyModel)
 
 # Initialize Qt resources from file resources.py
 from .resources import *
 # Import the code for the dialogs
 from .bdot10k_dialog_base import BDOT10kDialogBase
+from .bdot10k_dialog_by_layer import BDOT10kDialogByLayer
 # Import the code for the tasks
 from .task_dwnl_bdot import DownloadBdotTask
 
@@ -112,6 +114,14 @@ class BDOT10k:
             text=self.tr(u'Pobierz paczki .zip BDOT10k'),
             callback=self.run,
             parent=self.iface.mainWindow())
+            
+        self.add_action(
+            icon_path,
+            text=self.tr(u'Pobierz BDOT10k według warstwy'),
+            callback=self.run_by_layer,
+            add_to_toolbar=False,
+            parent=self.iface.mainWindow()
+        )
 
         # will be set False in run()
         self.first_start = True
@@ -190,3 +200,20 @@ class BDOT10k:
         qcbList = self.dlg.findChildren(QCheckBox)
         for qcb in qcbList:
             qcb.setChecked(False)
+
+    def run_by_layer(self):
+        #if self.first_start == True:
+            #self.first_start = False
+        self.dlgByLayer = BDOT10kDialogByLayer()
+
+        # set filters for the map layer combo box - only vector layers
+        self.dlgByLayer.mcbLayer.setFilters(QgsMapLayerProxyModel.PointLayer | \
+                                            QgsMapLayerProxyModel.LineLayer | \
+                                            QgsMapLayerProxyModel.PolygonLayer)
+
+        if self.dlgByLayer.txt:
+            self.dlgByLayer.txt.clear()
+
+        # show the dialog
+        self.dlgByLayer.show()
+        
