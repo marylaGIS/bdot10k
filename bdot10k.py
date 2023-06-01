@@ -16,8 +16,9 @@ from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QFileDialog, QMessageBox, QCheckBox
 
+from qgis import processing
 from qgis.core import (Qgis, QgsMessageLog, QgsApplication,
-                       QgsMapLayerProxyModel)
+                       QgsMapLayerProxyModel, QgsVectorLayer)
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -175,7 +176,7 @@ class BDOT10k:
                 description="Pobieranie paczek BDOT10k",
                 downloadPath=downloadPath,
                 bdot10kDataFormat=bdot10kDataFormat,
-                powiatyTerytList=checkBoxList,
+                powiatyTerytByLayerList=checkBoxList,
                 iface=self.iface
             )
 
@@ -210,10 +211,58 @@ class BDOT10k:
         self.dlgByLayer.mcbLayer.setFilters(QgsMapLayerProxyModel.PointLayer | \
                                             QgsMapLayerProxyModel.LineLayer | \
                                             QgsMapLayerProxyModel.PolygonLayer)
+        
+        self.dlgByLayer.btnSelect.clicked.connect(self.select_by_layer)
 
         if self.dlgByLayer.txt:
             self.dlgByLayer.txt.clear()
 
         # show the dialog
         self.dlgByLayer.show()
+    
+    def select_by_layer(self):
+        layerForSelection = self.dlgByLayer.mcbLayer.currentLayer()
+        layerPowiatyPath = os.path.join(self.plugin_dir, "powiaty.geojson")
+        layerPowiaty = QgsVectorLayer(layerPowiatyPath, "powiaty", "ogr")
+
+        global powiatyTerytByLayer
+        powiatyTerytByLayer = []
+
+        if not layerForSelection:
+            QMessageBox.warning(self.dlgByLayer, "Uwaga", "Wybierz warstwę wektorową.")
+        elif layerForSelection.featureCount() == 0:
+            QMessageBox.warning(self.dlgByLayer, "Uwaga", "Wybrana warstwa nie zawiera obiektów.")
+        else:
+            powiatySelection = processing.run("native:selectbylocation",
+                {'INPUT': layerPowiaty,
+                'PREDICATE': [0],
+                'INTERSECT': layerForSelection,
+                'METHOD': 0}
+            )
+
+            powiatySelected = powiatySelection['OUTPUT'].selectedFeatures()
+
+            powiatyTxt = "Powiaty: "
+
+            if powiatySelected:
+                for feature in powiatySelected:
+                    powiatyTerytByLayer.append(feature["teryt"])
+                    powiatyTxt += feature["teryt"] + " " + feature["nazwa"] + ", "
+                
+                powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(powiatyTerytByLayer)}"
+                self.dlgByLayer.txt.clear()
+                self.dlgByLayer.txt.append(powiatyCount)
+                self.dlgByLayer.txt.append(powiatyTxt)
+
+                return powiatyTerytByLayer
+                
+            else:
+                powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(powiatyTerytByLayer)}"
+                self.dlgByLayer.txt.clear()
+                self.dlgByLayer.txt.append(powiatyCount)
+                QMessageBox.information(self.dlgByLayer, "Uwaga", "Nie znaleziono żadnych powiatów.")
+                
+                return powiatyTerytByLayer
+        
+        return powiatyTerytByLayer
         
