@@ -176,7 +176,7 @@ class BDOT10k:
                 description="Pobieranie paczek BDOT10k",
                 downloadPath=downloadPath,
                 bdot10kDataFormat=bdot10kDataFormat,
-                powiatyTerytByLayerList=checkBoxList,
+                powiatyTerytList=checkBoxList,
                 iface=self.iface
             )
 
