@@ -201,7 +201,7 @@ class BDOT10k:
         qcbList = self.dlg.findChildren(QCheckBox)
         for qcb in qcbList:
             qcb.setChecked(False)
-
+    
     def run_by_layer(self):
         #if self.first_start == True:
             #self.first_start = False
@@ -213,10 +213,17 @@ class BDOT10k:
                                             QgsMapLayerProxyModel.PolygonLayer)
         
         self.dlgByLayer.btnSelect.clicked.connect(self.select_by_layer)
+        self.dlgByLayer.btnDwnl.clicked.connect(self.download_by_layer)
 
         if self.dlgByLayer.txt:
             self.dlgByLayer.txt.clear()
-
+        
+        global powiatyTerytByLayer
+        powiatyTerytByLayer = []
+        
+        if powiatyTerytByLayer:
+            powiatyTerytByLayer = []
+        
         # show the dialog
         self.dlgByLayer.show()
     
@@ -265,4 +272,29 @@ class BDOT10k:
                 return powiatyTerytByLayer
         
         return powiatyTerytByLayer
-        
+    
+    def download_by_layer(self):
+        if not powiatyTerytByLayer:
+            QMessageBox.information(self.dlgByLayer, "Uwaga", "Brak powiatów do pobrania.")
+        else:
+            downloadPath = self.dlgByLayer.dwnlPath.filePath()
+
+            if self.dlgByLayer.rbtnSHP.isChecked():
+                bdot10kDataFormat = 'SHP'
+            elif self.dlgByLayer.rbtnGML.isChecked():
+                bdot10kDataFormat = 'GML'
+
+            if self.check_dwnl_path(downloadPath):
+                QgsMessageLog.logMessage(f'Lokalizacja pobierania: {downloadPath}', 'BDOT10k', level=Qgis.MessageLevel.Info)
+                QgsMessageLog.logMessage('Pobieranie paczek dla powiatów: ' + str(sorted(powiatyTerytByLayer)), 'BDOT10k', level=Qgis.MessageLevel.Info)
+
+                task = DownloadBdotTask(
+                    description="Pobieranie paczek BDOT10k",
+                    downloadPath=downloadPath,
+                    bdot10kDataFormat=bdot10kDataFormat,
+                    powiatyTerytList=powiatyTerytByLayer,
+                    iface=self.iface
+                )
+
+                QgsApplication.taskManager().addTask(task)
+    
