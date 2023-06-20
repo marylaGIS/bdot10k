@@ -7,8 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>510</width>
-    <height>322</height>
+    <height>325</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>510</width>
+    <height>325</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>510</width>
+    <height>325</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>BDOT10k</string>
@@ -17,8 +29,8 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>100</y>
-     <width>491</width>
+     <y>120</y>
+     <width>490</width>
      <height>20</height>
     </rect>
    </property>
@@ -30,18 +42,21 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>120</y>
-     <width>491</width>
+     <y>145</y>
+     <width>490</width>
      <height>27</height>
     </rect>
+   </property>
+   <property name="currentIndex">
+    <number>-1</number>
    </property>
   </widget>
   <widget class="QTextBrowser" name="txt">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>200</y>
-     <width>491</width>
+     <y>205</y>
+     <width>490</width>
      <height>81</height>
     </rect>
    </property>
@@ -49,8 +64,8 @@
   <widget class="QPushButton" name="btnDwnl">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>290</y>
+     <x>425</x>
+     <y>295</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -63,9 +78,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
-     <width>51</width>
-     <height>17</height>
+     <y>90</y>
+     <width>90</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
@@ -79,9 +94,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>60</y>
-     <width>491</width>
-     <height>16</height>
+     <y>70</y>
+     <width>490</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="font">
@@ -99,10 +114,10 @@
   <widget class="QRadioButton" name="rbtnGML">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>80</y>
-     <width>51</width>
-     <height>17</height>
+     <x>110</x>
+     <y>90</y>
+     <width>90</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
@@ -114,7 +129,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>491</width>
+     <width>490</width>
      <height>20</height>
     </rect>
    </property>
@@ -134,8 +149,8 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>30</y>
-     <width>491</width>
+     <y>35</y>
+     <width>490</width>
      <height>27</height>
     </rect>
    </property>
@@ -143,25 +158,12 @@
     <enum>QgsFileWidget::GetDirectory</enum>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnSelect">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>160</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Wybierz</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label4">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>180</y>
-     <width>491</width>
+     <width>490</width>
      <height>20</height>
     </rect>
    </property>
