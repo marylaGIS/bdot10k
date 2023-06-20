@@ -8,7 +8,7 @@
                              -------------------
         begin                : 2022-01-06
         copyright            : (C) 2022 by marylaGIS
-        email                : maryla.qgis@gmail.com
+        email                : maryla4gis@gmail.com
         git sha              : $Format:%H$
  ***************************************************************************/
 
