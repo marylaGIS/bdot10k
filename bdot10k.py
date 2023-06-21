@@ -212,7 +212,7 @@ class BDOT10k:
                                             QgsMapLayerProxyModel.LineLayer | \
                                             QgsMapLayerProxyModel.PolygonLayer)
         
-        self.dlgByLayer.btnSelect.clicked.connect(self.select_by_layer)
+        self.dlgByLayer.mcbLayer.layerChanged.connect(self.select_by_layer)
         self.dlgByLayer.btnDwnl.clicked.connect(self.download_by_layer)
 
         if self.dlgByLayer.txt:
@@ -235,40 +235,41 @@ class BDOT10k:
         global powiatyTerytByLayer
         powiatyTerytByLayer = []
 
-        if not layerForSelection:
-            QMessageBox.warning(self.dlgByLayer, "Uwaga", "Wybierz warstwę wektorową.")
-        elif layerForSelection.featureCount() == 0:
-            QMessageBox.warning(self.dlgByLayer, "Uwaga", "Wybrana warstwa nie zawiera obiektów.")
-        else:
-            powiatySelection = processing.run("native:selectbylocation",
-                {'INPUT': layerPowiaty,
-                'PREDICATE': [0],
-                'INTERSECT': layerForSelection,
-                'METHOD': 0}
-            )
-
-            powiatySelected = powiatySelection['OUTPUT'].selectedFeatures()
-
-            powiatyTxt = "Powiaty: "
-
-            if powiatySelected:
-                for feature in powiatySelected:
-                    powiatyTerytByLayer.append(feature["teryt"])
-                    powiatyTxt += feature["teryt"] + " " + feature["nazwa"] + ", "
-                
-                powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(powiatyTerytByLayer)}"
-                self.dlgByLayer.txt.clear()
-                self.dlgByLayer.txt.append(powiatyCount)
-                self.dlgByLayer.txt.append(powiatyTxt)
-
-                return powiatyTerytByLayer
-                
+        if self.dlgByLayer.isVisible():
+            if not layerForSelection:
+                QMessageBox.warning(self.dlgByLayer, "Uwaga", "Wybierz warstwę wektorową.")
+            elif layerForSelection and layerForSelection.featureCount() == 0:
+                QMessageBox.warning(self.dlgByLayer, "Uwaga", "Wybrana warstwa nie zawiera obiektów.")
             else:
-                powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(powiatyTerytByLayer)}"
-                self.dlgByLayer.txt.clear()
-                self.dlgByLayer.txt.append(powiatyCount)
-                QMessageBox.information(self.dlgByLayer, "Uwaga", "Nie znaleziono żadnych powiatów.")
-                
+                powiatySelection = processing.run("native:selectbylocation",
+                    {'INPUT': layerPowiaty,
+                    'PREDICATE': [0],
+                    'INTERSECT': layerForSelection,
+                    'METHOD': 0}
+                )
+
+                powiatySelected = powiatySelection['OUTPUT'].selectedFeatures()
+
+                powiatyTxt = "Powiaty: "
+
+                if powiatySelected:
+                    for feature in powiatySelected:
+                        powiatyTerytByLayer.append(feature["teryt"])
+                        powiatyTxt += feature["teryt"] + " " + feature["nazwa"] + ", "
+                    
+                    powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(powiatyTerytByLayer)}"
+                    self.dlgByLayer.txt.clear()
+                    self.dlgByLayer.txt.append(powiatyCount)
+                    self.dlgByLayer.txt.append(powiatyTxt)
+
+                    return powiatyTerytByLayer
+                    
+                else:
+                    powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(powiatyTerytByLayer)}"
+                    self.dlgByLayer.txt.clear()
+                    self.dlgByLayer.txt.append(powiatyCount)
+                    QMessageBox.information(self.dlgByLayer, "Uwaga", "Nie znaleziono żadnych powiatów.")
+                    
                 return powiatyTerytByLayer
         
         return powiatyTerytByLayer
@@ -297,4 +298,3 @@ class BDOT10k:
                 )
 
                 QgsApplication.taskManager().addTask(task)
-    
