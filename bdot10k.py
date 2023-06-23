@@ -18,7 +18,8 @@ from qgis.PyQt.QtWidgets import QAction, QFileDialog, QMessageBox, QCheckBox
 
 from qgis import processing
 from qgis.core import (Qgis, QgsMessageLog, QgsApplication,
-                       QgsMapLayerProxyModel, QgsVectorLayer)
+                       QgsMapLayerProxyModel, QgsVectorLayer, 
+                       QgsCoordinateReferenceSystem)
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -241,8 +242,14 @@ class BDOT10k:
             elif layerForSelection and layerForSelection.featureCount() == 0:
                 QMessageBox.warning(self.dlgByLayer, "Uwaga", "Wybrana warstwa nie zawiera obiektów.")
             else:
+                layerPowiatyProj = processing.run("native:reprojectlayer", 
+                    {'INPUT':layerPowiaty,
+                    'TARGET_CRS':QgsCoordinateReferenceSystem('EPSG:2180'),
+                    'OUTPUT':'TEMPORARY_OUTPUT'}
+                )['OUTPUT']
+                
                 powiatySelection = processing.run("native:selectbylocation",
-                    {'INPUT': layerPowiaty,
+                    {'INPUT': layerPowiatyProj,
                     'PREDICATE': [0],
                     'INTERSECT': layerForSelection,
                     'METHOD': 0}
