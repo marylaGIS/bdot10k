@@ -117,11 +117,11 @@ class BDOT10k:
             callback=self.run,
             parent=self.iface.mainWindow())
             
+        icon_path = ':/plugins/bdot10k/icon2.png'
         self.add_action(
             icon_path,
             text=self.tr(u'Pobierz BDOT10k według warstwy'),
             callback=self.run_by_layer,
-            add_to_toolbar=False,
             parent=self.iface.mainWindow()
         )
 
