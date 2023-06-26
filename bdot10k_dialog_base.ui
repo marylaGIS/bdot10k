@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>510</width>
-    <height>440</height>
+    <width>570</width>
+    <height>480</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>570</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>570</width>
+    <height>480</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>BDOT10k</string>
@@ -18,7 +30,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>491</width>
+     <width>551</width>
      <height>16</height>
     </rect>
    </property>
@@ -39,8 +51,8 @@
     <rect>
      <x>10</x>
      <y>110</y>
-     <width>491</width>
-     <height>291</height>
+     <width>551</width>
+     <height>331</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -84,7 +96,7 @@
       <item row="1" column="0">
        <widget class="QCheckBox" name="pow_0202">
         <property name="text">
-         <string>dzierżonowski</string>
+         <string>dzierżoniowski</string>
         </property>
        </widget>
       </item>
@@ -105,7 +117,7 @@
       <item row="0" column="0">
        <widget class="QCheckBox" name="pow_0201">
         <property name="text">
-         <string>bolesławicki</string>
+         <string>bolesławiecki</string>
         </property>
        </widget>
       </item>
@@ -121,7 +133,7 @@
     <widget class="QWidget" name="gridLayoutWidget_6">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>140</x>
        <y>0</y>
        <width>122</width>
        <height>211</height>
@@ -189,7 +201,7 @@
     <widget class="QWidget" name="gridLayoutWidget_9">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>280</x>
        <y>0</y>
        <width>121</width>
        <height>184</height>
@@ -250,7 +262,7 @@
     <widget class="QWidget" name="gridLayoutWidget_7">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>420</x>
        <y>0</y>
        <width>121</width>
        <height>184</height>
@@ -370,7 +382,7 @@
     <widget class="QWidget" name="gridLayoutWidget_2">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>150</x>
        <y>0</y>
        <width>121</width>
        <height>157</height>
@@ -424,7 +436,7 @@
     <widget class="QWidget" name="gridLayoutWidget_3">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>280</x>
        <y>0</y>
        <width>121</width>
        <height>157</height>
@@ -478,7 +490,7 @@
     <widget class="QWidget" name="gridLayoutWidget_4">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>410</x>
        <y>0</y>
        <width>121</width>
        <height>130</height>
@@ -584,7 +596,7 @@
     <widget class="QWidget" name="gridLayoutWidget_10">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>270</x>
        <y>0</y>
        <width>121</width>
        <height>157</height>
@@ -638,7 +650,7 @@
     <widget class="QWidget" name="gridLayoutWidget_11">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>140</x>
        <y>0</y>
        <width>121</width>
        <height>157</height>
@@ -692,7 +704,7 @@
     <widget class="QWidget" name="gridLayoutWidget_12">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>400</x>
        <y>0</y>
        <width>121</width>
        <height>157</height>
@@ -753,7 +765,7 @@
       <rect>
        <x>120</x>
        <y>0</y>
-       <width>155</width>
+       <width>159</width>
        <height>103</height>
       </rect>
      </property>
@@ -775,7 +787,7 @@
       <item row="1" column="0">
        <widget class="QCheckBox" name="pow_0806">
         <property name="text">
-         <string>strzekecko-drezdencki</string>
+         <string>strzelecko-drezdenecki</string>
         </property>
        </widget>
       </item>
@@ -831,7 +843,7 @@
     <widget class="QWidget" name="gridLayoutWidget_16">
      <property name="geometry">
       <rect>
-       <x>250</x>
+       <x>290</x>
        <y>0</y>
        <width>111</width>
        <height>76</height>
@@ -841,7 +853,7 @@
       <item row="2" column="1">
        <widget class="QCheckBox" name="pow_0810">
         <property name="text">
-         <string>żegański</string>
+         <string>żagański</string>
         </property>
        </widget>
       </item>
@@ -855,7 +867,7 @@
       <item row="0" column="1">
        <widget class="QCheckBox" name="pow_0812">
         <property name="text">
-         <string>wchowski</string>
+         <string>wschowski</string>
         </property>
        </widget>
       </item>
@@ -864,7 +876,7 @@
     <widget class="QWidget" name="gridLayoutWidget_64">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>400</x>
        <y>0</y>
        <width>146</width>
        <height>76</height>
@@ -956,7 +968,7 @@
     <widget class="QWidget" name="gridLayoutWidget_17">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>130</x>
        <y>0</y>
        <width>121</width>
        <height>161</height>
@@ -1010,7 +1022,7 @@
     <widget class="QWidget" name="gridLayoutWidget_18">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>390</x>
        <y>0</y>
        <width>147</width>
        <height>161</height>
@@ -1020,7 +1032,7 @@
       <item row="1" column="0">
        <widget class="QCheckBox" name="pow_1019">
         <property name="text">
-         <string>zduńkowolski</string>
+         <string>zduńskowolski</string>
         </property>
        </widget>
       </item>
@@ -1064,7 +1076,7 @@
     <widget class="QWidget" name="gridLayoutWidget_19">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>260</x>
        <y>0</y>
        <width>121</width>
        <height>161</height>
@@ -1123,7 +1135,7 @@
     <widget class="QWidget" name="gridLayoutWidget_20">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>410</x>
        <y>0</y>
        <width>123</width>
        <height>131</height>
@@ -1224,7 +1236,7 @@
     <widget class="QWidget" name="gridLayoutWidget_22">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>140</x>
        <y>0</y>
        <width>121</width>
        <height>161</height>
@@ -1278,7 +1290,7 @@
     <widget class="QWidget" name="gridLayoutWidget_23">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>280</x>
        <y>0</y>
        <width>121</width>
        <height>131</height>
@@ -1419,7 +1431,7 @@
     <widget class="QWidget" name="gridLayoutWidget_25">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>130</x>
        <y>0</y>
        <width>122</width>
        <height>292</height>
@@ -1508,7 +1520,7 @@
     <widget class="QWidget" name="gridLayoutWidget_26">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>260</x>
        <y>0</y>
        <width>149</width>
        <height>265</height>
@@ -1590,7 +1602,7 @@
     <widget class="QWidget" name="gridLayoutWidget_27">
      <property name="geometry">
       <rect>
-       <x>363</x>
+       <x>420</x>
        <y>0</y>
        <width>121</width>
        <height>265</height>
@@ -1710,17 +1722,17 @@
     <widget class="QWidget" name="gridLayoutWidget_29">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>310</x>
        <y>0</y>
-       <width>101</width>
+       <width>104</width>
        <height>76</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_33">
-      <item row="1" column="0">
-       <widget class="QCheckBox" name="pow_1608">
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="pow_1609">
         <property name="text">
-         <string>oleski</string>
+         <string>opolski</string>
         </property>
        </widget>
       </item>
@@ -1731,10 +1743,10 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QCheckBox" name="pow_1609">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="pow_1608">
         <property name="text">
-         <string>opolski</string>
+         <string>oleski</string>
         </property>
        </widget>
       </item>
@@ -1743,7 +1755,7 @@
     <widget class="QWidget" name="gridLayoutWidget_30">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>180</x>
        <y>0</y>
        <width>121</width>
        <height>76</height>
@@ -1776,7 +1788,7 @@
     <widget class="QWidget" name="gridLayoutWidget_31">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>420</x>
        <y>0</y>
        <width>123</width>
        <height>76</height>
@@ -1809,12 +1821,12 @@
    </widget>
    <widget class="QWidget" name="woj_18">
     <attribute name="title">
-     <string>pokarpackie</string>
+     <string>podkarpackie</string>
     </attribute>
     <widget class="QWidget" name="gridLayoutWidget_32">
      <property name="geometry">
       <rect>
-       <x>380</x>
+       <x>430</x>
        <y>0</y>
        <width>111</width>
        <height>157</height>
@@ -1859,7 +1871,7 @@
       <item row="5" column="0">
        <widget class="QCheckBox" name="pow_1864">
         <property name="text">
-         <string>Tarnobrzseg</string>
+         <string>Tarnobrzeg</string>
         </property>
        </widget>
       </item>
@@ -1929,7 +1941,7 @@
     <widget class="QWidget" name="gridLayoutWidget_34">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>130</x>
        <y>0</y>
        <width>121</width>
        <height>157</height>
@@ -1983,7 +1995,7 @@
     <widget class="QWidget" name="gridLayoutWidget_35">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>260</x>
        <y>0</y>
        <width>163</width>
        <height>157</height>
@@ -2021,7 +2033,7 @@
       <item row="5" column="0">
        <widget class="QCheckBox" name="pow_1818">
         <property name="text">
-         <string>stalowolski</string>
+         <string>stalowowolski</string>
         </property>
        </widget>
       </item>
@@ -2042,7 +2054,7 @@
     <widget class="QWidget" name="gridLayoutWidget_36">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>410</x>
        <y>0</y>
        <width>123</width>
        <height>103</height>
@@ -2082,7 +2094,7 @@
     <widget class="QWidget" name="gridLayoutWidget_37">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>130</x>
        <y>0</y>
        <width>121</width>
        <height>103</height>
@@ -2092,7 +2104,7 @@
       <item row="0" column="0">
        <widget class="QCheckBox" name="pow_2006">
         <property name="text">
-         <string>koleński</string>
+         <string>kolneński</string>
         </property>
        </widget>
       </item>
@@ -2113,7 +2125,7 @@
       <item row="3" column="0">
        <widget class="QCheckBox" name="pow_2009">
         <property name="text">
-         <string>sejeński</string>
+         <string>sejneński</string>
         </property>
        </widget>
       </item>
@@ -2122,7 +2134,7 @@
     <widget class="QWidget" name="gridLayoutWidget_38">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>260</x>
        <y>0</y>
        <width>137</width>
        <height>103</height>
@@ -2214,7 +2226,7 @@
     <widget class="QWidget" name="gridLayoutWidget_40">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>140</x>
        <y>0</y>
        <width>121</width>
        <height>130</height>
@@ -2261,7 +2273,7 @@
     <widget class="QWidget" name="gridLayoutWidget_41">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>280</x>
        <y>0</y>
        <width>121</width>
        <height>130</height>
@@ -2325,7 +2337,7 @@
       <item row="0" column="0">
        <widget class="QCheckBox" name="pow_2201">
         <property name="text">
-         <string>bytnowski</string>
+         <string>bytowski</string>
         </property>
        </widget>
       </item>
@@ -2355,7 +2367,7 @@
     <widget class="QWidget" name="gridLayoutWidget_43">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>410</x>
        <y>0</y>
        <width>121</width>
        <height>130</height>
@@ -2482,7 +2494,7 @@
     <widget class="QWidget" name="gridLayoutWidget_45">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>140</x>
        <y>0</y>
        <width>122</width>
        <height>238</height>
@@ -2557,7 +2569,7 @@
     <widget class="QWidget" name="gridLayoutWidget_46">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>260</x>
        <y>0</y>
        <width>133</width>
        <height>238</height>
@@ -2632,7 +2644,7 @@
     <widget class="QWidget" name="gridLayoutWidget_47">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>390</x>
        <y>0</y>
        <width>152</width>
        <height>238</height>
@@ -2712,7 +2724,7 @@
     <widget class="QWidget" name="gridLayoutWidget_48">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>400</x>
        <y>0</y>
        <width>123</width>
        <height>76</height>
@@ -2785,7 +2797,7 @@
     <widget class="QWidget" name="gridLayoutWidget_50">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>270</x>
        <y>0</y>
        <width>121</width>
        <height>76</height>
@@ -2818,7 +2830,7 @@
     <widget class="QWidget" name="gridLayoutWidget_51">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>140</x>
        <y>0</y>
        <width>121</width>
        <height>103</height>
@@ -2863,7 +2875,7 @@
     <widget class="QWidget" name="gridLayoutWidget_52">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>400</x>
        <y>0</y>
        <width>123</width>
        <height>130</height>
@@ -2964,7 +2976,7 @@
     <widget class="QWidget" name="gridLayoutWidget_54">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>270</x>
        <y>0</y>
        <width>121</width>
        <height>130</height>
@@ -3011,7 +3023,7 @@
     <widget class="QWidget" name="gridLayoutWidget_55">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>140</x>
        <y>0</y>
        <width>121</width>
        <height>130</height>
@@ -3138,7 +3150,7 @@
     <widget class="QWidget" name="gridLayoutWidget_57">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>310</x>
        <y>0</y>
        <width>122</width>
        <height>238</height>
@@ -3213,7 +3225,7 @@
     <widget class="QWidget" name="gridLayoutWidget_58">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>180</x>
        <y>0</y>
        <width>122</width>
        <height>238</height>
@@ -3272,7 +3284,7 @@
       <item row="5" column="0">
        <widget class="QCheckBox" name="pow_3015">
         <property name="text">
-         <string>nowotymski</string>
+         <string>nowotomyski</string>
         </property>
        </widget>
       </item>
@@ -3288,7 +3300,7 @@
     <widget class="QWidget" name="gridLayoutWidget_59">
      <property name="geometry">
       <rect>
-       <x>380</x>
+       <x>430</x>
        <y>0</y>
        <width>123</width>
        <height>211</height>
@@ -3361,7 +3373,7 @@
     <widget class="QWidget" name="gridLayoutWidget_60">
      <property name="geometry">
       <rect>
-       <x>240</x>
+       <x>280</x>
        <y>0</y>
        <width>121</width>
        <height>130</height>
@@ -3399,7 +3411,7 @@
       <item row="4" column="0">
        <widget class="QCheckBox" name="pow_3215">
         <property name="text">
-         <string>szczeciniecki</string>
+         <string>szczecinecki</string>
         </property>
        </widget>
       </item>
@@ -3462,7 +3474,7 @@
     <widget class="QWidget" name="gridLayoutWidget_62">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>410</x>
        <y>0</y>
        <width>123</width>
        <height>130</height>
@@ -3509,7 +3521,7 @@
     <widget class="QWidget" name="gridLayoutWidget_63">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>140</x>
        <y>0</y>
        <width>121</width>
        <height>130</height>
@@ -3558,9 +3570,9 @@
   <widget class="QPushButton" name="btnDwnl">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>410</y>
-     <width>241</width>
+     <x>290</x>
+     <y>450</y>
+     <width>271</width>
      <height>23</height>
     </rect>
    </property>
@@ -3573,7 +3585,7 @@
     <rect>
      <x>10</x>
      <y>30</y>
-     <width>491</width>
+     <width>551</width>
      <height>27</height>
     </rect>
    </property>
@@ -3585,8 +3597,8 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>410</y>
-     <width>231</width>
+     <y>450</y>
+     <width>261</width>
      <height>23</height>
     </rect>
    </property>
@@ -3599,7 +3611,7 @@
     <rect>
      <x>10</x>
      <y>60</y>
-     <width>491</width>
+     <width>551</width>
      <height>16</height>
     </rect>
    </property>
@@ -3634,7 +3646,7 @@
   <widget class="QRadioButton" name="rbtnGML">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>100</x>
      <y>80</y>
      <width>82</width>
      <height>17</height>
