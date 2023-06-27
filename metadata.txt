@@ -6,18 +6,22 @@
 name=BDOT10k
 qgisMinimumVersion=3.0
 description=Wtyczka do pobierania danych BDOT10k. Plugin for downloading BDOT10k data.
-version=0.1
+version=1.0
 author=Maryla Jeż
-email=maryla.qgis@gmail.com
+email=maryla4gis@gmail.com
 
-about=[PL] Wtyczka umożliwia pobranie danych BDOT10k.
-    Powiaty wybiera się zaznaczając pola wyboru
-    pogrupowane województwami.
+about=[PL] Wtyczka umożliwia pobranie danych BDOT10k:
+    - zaznaczając pola wyboru dla poszczególnych powiatów
+    pogrupowanych województwami,
+    - poprzez selekcję powiatów na podstawie przecięcia
+    z wybraną warstwą wektorową.
     
-    [EN] The plugin allows to download BDOT10k data.
-    (BDOT10k stands for Database of Topographic Objects)
-    Counties are selected by checking the checkboxes
-    grouped by voivodships.
+    [EN] The plugin allows to download BDOT10k data
+    (BDOT10k stands for Database of Topographic Objects):
+    - by selecting checkboxes for individual counties
+    grouped by voivodeships,
+    - by selecting counties based on the intersection
+    with the chosen vector layer.
 
 tracker=https://github.com/marylaGIS/bdot10k/issues
 repository=https://github.com/marylaGIS/bdot10k
@@ -27,7 +31,7 @@ repository=https://github.com/marylaGIS/bdot10k
 
 hasProcessingProvider=no
 # Uncomment the following line and add your changelog:
-# changelog=
+#changelog=
 
 # Tags are comma separated with spaces allowed
 tags=bdot10k, gugik, polska, poland, otwarte dane, open data, marylaGIS
