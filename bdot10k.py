@@ -275,7 +275,7 @@ class BDOT10k:
                     powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(powiatyTerytByLayer)}"
                     self.dlgByLayer.txt.clear()
                     self.dlgByLayer.txt.append(powiatyCount)
-                    QMessageBox.information(self.dlgByLayer, "Uwaga", "Nie znaleziono żadnych powiatów.")
+                    QMessageBox.critical(self.dlgByLayer, "Błąd", "Nie znaleziono żadnych powiatów.")
                     
                 return powiatyTerytByLayer
         
@@ -283,7 +283,7 @@ class BDOT10k:
     
     def download_by_layer(self):
         if not powiatyTerytByLayer:
-            QMessageBox.information(self.dlgByLayer, "Uwaga", "Brak powiatów do pobrania.")
+            QMessageBox.critical(self.dlgByLayer, "Błąd", "Brak powiatów do pobrania.")
         else:
             downloadPath = self.dlgByLayer.dwnlPath.filePath()
 
