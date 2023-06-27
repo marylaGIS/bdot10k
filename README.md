@@ -5,4 +5,11 @@ Wtyczka umożliwiająca pobieranie danych BDOT10k z poziomu QGISa.
 Plugin for downloading BDOT10k data (Database of Topographic Objects) directly from QGIS.
 
 
-![bdot10k](https://drive.google.com/uc?export=view&id=1w3J5dKC2LW83dgwIadl4q51yUPYPRCY3)
+- zaznaczając pola wyboru dla poszczególnych powiatów pogrupowanych województwami
+- by selecting checkboxes for individual counties grouped by voivodeships
+![bdot10k_dialog_base](https://drive.google.com/uc?export=view&id=17gLkYzgJBnAUbWY2MEfo9frx0dabaP4W)
+
+
+- poprzez selekcję powiatów na podstawie przecięcia z wybraną warstwą wektorową
+- by selecting counties based on the intersection with the chosen vector layer
+![bdot10k_dialog_by_layer](https://drive.google.com/uc?export=view&id=1lzhWlThWu7CGQEYRhLwzrUp3wrXPUoNt)
