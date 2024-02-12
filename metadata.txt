@@ -6,7 +6,7 @@
 name=BDOT10k
 qgisMinimumVersion=3.0
 description=Wtyczka do pobierania danych BDOT10k. Plugin for downloading BDOT10k data.
-version=1.0
+version=1.0.1
 author=Maryla Jeż
 email=maryla4gis@gmail.com
 
@@ -31,7 +31,13 @@ repository=https://github.com/marylaGIS/bdot10k
 
 hasProcessingProvider=no
 # Uncomment the following line and add your changelog:
-#changelog=
+changelog=
+	1.0.1
+	- poprawiono linki do pobierania danych w nowym schemacie
+	1.0
+	- dodano możliwość wyselekcjonowania powiatów na podstawie przecięcia z warstwą wektorową
+	0.1
+	- pobieranie danych poprzez wybór powiatu/ów z list
 
 # Tags are comma separated with spaces allowed
 tags=bdot10k, gugik, polska, poland, otwarte dane, open data, marylaGIS
