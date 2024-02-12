@@ -8,31 +8,27 @@ MESSAGE_CATEGORY = "BDOT10k"
 class DownloadBdotTask(QgsTask):
     """Subclass task for dwonloading BDOT10k"""
 
-    def __init__(self, description, downloadPath, bdot10kDataFormat, powiatyTerytList, iface):
+    def __init__(self, description, downloadPath, powiatyTerytList, iface):
         super().__init__(description, QgsTask.CanCancel)
         self.exception = None
         self.iface = iface
         self.downloadPath = downloadPath
-        self.bdot10kDataFormat = bdot10kDataFormat
         self.powiatyTerytList = powiatyTerytList
 
     def run(self):
         downloadPath=self.downloadPath
-        bdot10kDataFormat=self.bdot10kDataFormat
         powiatyTerytList=self.powiatyTerytList
 
         QgsMessageLog.logMessage(f"Rozpoczęto pobieranie BDOT10k dla: {powiatyTerytList}",
                                 MESSAGE_CATEGORY, Qgis.Info)
 
         for teryt in powiatyTerytList:
-            if bdot10kDataFormat == 'SHP':
-                url = f'https://opendata.geoportal.gov.pl/bdot10k/{bdot10kDataFormat}/{teryt[:2]}/{teryt}_{bdot10kDataFormat}.zip'
-            elif bdot10kDataFormat == 'GML':
-                url = f'https://opendata.geoportal.gov.pl/bdot10k/{teryt[:2]}/{teryt}_{bdot10kDataFormat}.zip'
+                
+            url = f'https://opendata.geoportal.gov.pl/bdot10k/schemat2021/{teryt[:2]}/{teryt}_GML.zip'
 
             r = requests.get(url)
             if r.status_code == 200:
-                bdot_zip_path = os.path.join(downloadPath, f'bdot10k_{bdot10kDataFormat}_{teryt}.zip')#, teryt, '.zip')
+                bdot_zip_path = os.path.join(downloadPath, f'bdot10k_{teryt}.zip')
                 with open(bdot_zip_path, 'wb') as bdot_dwnl_file:
                     bdot_dwnl_file.write(r.content)
             else:

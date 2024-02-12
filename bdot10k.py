@@ -153,12 +153,6 @@ class BDOT10k:
     
     def download_bdot10k_zip(self):
         downloadPath = self.dlg.dwnlPath.filePath()
-
-        # check which data type has been selected
-        if self.dlg.rbtnSHP.isChecked():
-            bdot10kDataFormat = 'SHP'
-        elif self.dlg.rbtnGML.isChecked():
-            bdot10kDataFormat = 'GML'
         
         # create a list with all checked checkboxes
         qcbList = self.dlg.findChildren(QCheckBox)
@@ -176,7 +170,6 @@ class BDOT10k:
             task = DownloadBdotTask(
                 description="Pobieranie paczek BDOT10k",
                 downloadPath=downloadPath,
-                bdot10kDataFormat=bdot10kDataFormat,
                 powiatyTerytList=checkBoxList,
                 iface=self.iface
             )
@@ -287,11 +280,6 @@ class BDOT10k:
         else:
             downloadPath = self.dlgByLayer.dwnlPath.filePath()
 
-            if self.dlgByLayer.rbtnSHP.isChecked():
-                bdot10kDataFormat = 'SHP'
-            elif self.dlgByLayer.rbtnGML.isChecked():
-                bdot10kDataFormat = 'GML'
-
             if self.check_dwnl_path(downloadPath):
                 QgsMessageLog.logMessage(f'Lokalizacja pobierania: {downloadPath}', 'BDOT10k', level=Qgis.MessageLevel.Info)
                 QgsMessageLog.logMessage('Pobieranie paczek dla powiatów: ' + str(sorted(powiatyTerytByLayer)), 'BDOT10k', level=Qgis.MessageLevel.Info)
@@ -299,7 +287,6 @@ class BDOT10k:
                 task = DownloadBdotTask(
                     description="Pobieranie paczek BDOT10k",
                     downloadPath=downloadPath,
-                    bdot10kDataFormat=bdot10kDataFormat,
                     powiatyTerytList=powiatyTerytByLayer,
                     iface=self.iface
                 )
