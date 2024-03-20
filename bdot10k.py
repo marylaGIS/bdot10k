@@ -154,6 +154,16 @@ class BDOT10k:
     def download_bdot10k_zip(self):
         downloadPath = self.dlg.dwnlPath.filePath()
         
+        if self.dlg.gbOldSchema.isChecked():
+            oldSchema = True
+            if self.dlg.rbtnSHP.isChecked():
+                bdot10kDataFormat = 'SHP'
+            elif self.dlg.rbtnGML.isChecked():
+                bdot10kDataFormat = 'GML'
+        else:
+            oldSchema = False
+            bdot10kDataFormat = None
+        
         # create a list with all checked checkboxes
         qcbList = self.dlg.findChildren(QCheckBox)
         checkBoxList = []
@@ -170,6 +180,8 @@ class BDOT10k:
             task = DownloadBdotTask(
                 description="Pobieranie paczek BDOT10k",
                 downloadPath=downloadPath,
+                oldSchema=oldSchema,
+                bdot10kDataFormat=bdot10kDataFormat,
                 powiatyTerytList=checkBoxList,
                 iface=self.iface
             )
@@ -234,15 +246,16 @@ class BDOT10k:
                 QMessageBox.warning(self.dlgByLayer, "Uwaga", "Wybierz warstwę wektorową.")
             elif layerForSelection and layerForSelection.featureCount() == 0:
                 QMessageBox.warning(self.dlgByLayer, "Uwaga", "Wybrana warstwa nie zawiera obiektów.")
-            else:
-                layerPowiatyProj = processing.run("native:reprojectlayer", 
-                    {'INPUT':layerPowiaty,
-                    'TARGET_CRS':QgsCoordinateReferenceSystem('EPSG:2180'),
-                    'OUTPUT':'TEMPORARY_OUTPUT'}
-                )['OUTPUT']
+            else:                
+                if layerPowiaty.crs() != QgsCoordinateReferenceSystem('EPSG:2180'):
+                    layerPowiaty = processing.run("native:reprojectlayer", 
+                        {'INPUT':layerPowiaty,
+                        'TARGET_CRS':QgsCoordinateReferenceSystem('EPSG:2180'),
+                        'OUTPUT':'TEMPORARY_OUTPUT'}
+                    )['OUTPUT']
                 
                 powiatySelection = processing.run("native:selectbylocation",
-                    {'INPUT': layerPowiatyProj,
+                    {'INPUT': layerPowiaty,
                     'PREDICATE': [0],
                     'INTERSECT': layerForSelection,
                     'METHOD': 0}
@@ -271,7 +284,7 @@ class BDOT10k:
                     QMessageBox.critical(self.dlgByLayer, "Błąd", "Nie znaleziono żadnych powiatów.")
                     
                 return powiatyTerytByLayer
-        
+                
         return powiatyTerytByLayer
     
     def download_by_layer(self):
@@ -279,6 +292,16 @@ class BDOT10k:
             QMessageBox.critical(self.dlgByLayer, "Błąd", "Brak powiatów do pobrania.")
         else:
             downloadPath = self.dlgByLayer.dwnlPath.filePath()
+            
+            if self.dlgByLayer.gbOldSchema.isChecked():
+                oldSchema = True
+                if self.dlgByLayer.rbtnSHP.isChecked():
+                    bdot10kDataFormat = 'SHP'
+                elif self.dlgByLayer.rbtnGML.isChecked():
+                    bdot10kDataFormat = 'GML'
+            else:
+                oldSchema = False
+                bdot10kDataFormat = None
 
             if self.check_dwnl_path(downloadPath):
                 QgsMessageLog.logMessage(f'Lokalizacja pobierania: {downloadPath}', 'BDOT10k', level=Qgis.MessageLevel.Info)
@@ -287,6 +310,8 @@ class BDOT10k:
                 task = DownloadBdotTask(
                     description="Pobieranie paczek BDOT10k",
                     downloadPath=downloadPath,
+                    oldSchema=oldSchema,
+                    bdot10kDataFormat=bdot10kDataFormat,
                     powiatyTerytList=powiatyTerytByLayer,
                     iface=self.iface
                 )
