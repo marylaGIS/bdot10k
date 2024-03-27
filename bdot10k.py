@@ -61,6 +61,8 @@ class BDOT10k:
         # Declare instance attributes
         self.actions = []
         self.menu = self.tr(u'&BDOT10k')
+        
+        self.taskManager = QgsApplication.taskManager()
 
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
@@ -186,7 +188,7 @@ class BDOT10k:
                 iface=self.iface
             )
 
-            QgsApplication.taskManager().addTask(task)
+            self.taskManager.addTask(task)
 
         elif len(checkBoxList) == 0:
             QMessageBox.critical(self.dlg, "Błąd", "Wybierz powiat(y) do pobrania BDTO10k.")
@@ -316,4 +318,4 @@ class BDOT10k:
                     iface=self.iface
                 )
 
-                QgsApplication.taskManager().addTask(task)
+                self.taskManager.addTask(task)
