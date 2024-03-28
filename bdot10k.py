@@ -26,6 +26,7 @@ from .resources import *
 # Import the code for the dialogs
 from .bdot10k_dialog_base import BDOT10kDialogBase
 from .bdot10k_dialog_by_layer import BDOT10kDialogByLayer
+from .bdot10k_dialog_info import BDOT10kDialogInfo
 # Import the code for the tasks
 from .task_dwnl_bdot import DownloadBdotTask
 
@@ -125,6 +126,14 @@ class BDOT10k:
             text=self.tr(u'Pobierz BDOT10k według warstwy'),
             callback=self.run_by_layer,
             parent=self.iface.mainWindow()
+        )
+        
+        self.add_action(
+            icon_path=None,
+            text=self.tr(u'Informacje'),
+            callback=self.info,
+            parent=self.iface.mainWindow(),
+            add_to_toolbar=False
         )
 
         # will be set False in run()
@@ -319,3 +328,7 @@ class BDOT10k:
                 )
 
                 self.taskManager.addTask(task)
+    
+    def info(self):
+        self.dlgInfo = BDOT10kDialogInfo()
+        self.dlgInfo.show()
