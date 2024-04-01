@@ -6,7 +6,7 @@
 name=BDOT10k
 qgisMinimumVersion=3.0
 description=Wtyczka do pobierania danych BDOT10k. Plugin for downloading BDOT10k data.
-version=1.0.1
+version=1.1.1
 author=Maryla Jeż
 email=maryla4gis@gmail.com
 
@@ -32,6 +32,8 @@ repository=https://github.com/marylaGIS/bdot10k
 hasProcessingProvider=no
 # Uncomment the following line and add your changelog:
 changelog=
+	1.1.1
+	- przywrócono linki do pobierania danych w starym schemacie
 	1.0.1
 	- poprawiono linki do pobierania danych w nowym schemacie
 	1.0
