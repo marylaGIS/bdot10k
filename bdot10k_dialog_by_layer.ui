@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>510</width>
-    <height>330</height>
+    <height>360</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>510</width>
-    <height>330</height>
+    <height>360</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>510</width>
-    <height>330</height>
+    <height>360</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -29,7 +29,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>125</y>
+     <y>155</y>
      <width>490</width>
      <height>20</height>
     </rect>
@@ -42,7 +42,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>150</y>
+     <y>180</y>
      <width>490</width>
      <height>27</height>
     </rect>
@@ -55,7 +55,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>210</y>
+     <y>240</y>
      <width>490</width>
      <height>81</height>
     </rect>
@@ -65,7 +65,7 @@
    <property name="geometry">
     <rect>
      <x>425</x>
-     <y>300</y>
+     <y>330</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -112,7 +112,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>185</y>
+     <y>215</y>
      <width>490</width>
      <height>20</height>
     </rect>
@@ -125,7 +125,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>70</y>
+     <y>100</y>
      <width>490</width>
      <height>50</height>
     </rect>
@@ -139,7 +139,7 @@
    <property name="checked">
     <bool>false</bool>
    </property>
-   <widget class="QRadioButton" name="rbtnGML">
+   <widget class="QRadioButton" name="rbtnGMLold">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -152,7 +152,7 @@
      <string>GML</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="rbtnSHP">
+   <widget class="QRadioButton" name="rbtnSHPold">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -169,6 +169,41 @@
     </property>
    </widget>
   </widget>
+  <widget class="QRadioButton" name="rbtnGML">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>70</y>
+     <width>110</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GML</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <attribute name="buttonGroup">
+    <string notr="true">buttonGroup</string>
+   </attribute>
+  </widget>
+  <widget class="QRadioButton" name="rbtnGPKG">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>70</y>
+     <width>110</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GPKG</string>
+   </property>
+   <attribute name="buttonGroup">
+    <string notr="true">buttonGroup</string>
+   </attribute>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -184,4 +219,7 @@
  </customwidgets>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>
