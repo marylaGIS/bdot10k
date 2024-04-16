@@ -33,8 +33,12 @@ class DownloadBdotTask(QgsTask):
                 url = 'https://opendata.geoportal.gov.pl/bdot10k/{}/{}_GML.zip'
                 bdot_zip = 'bdot10k_GML_{}.zip'
         else:
-            url = 'https://opendata.geoportal.gov.pl/bdot10k/schemat2021/{}/{}_GML.zip'
-            bdot_zip = 'bdot10k_{}.zip'
+            if self.bdot10kDataFormat == 'GML':
+                url = 'https://opendata.geoportal.gov.pl/bdot10k/schemat2021/{}/{}_GML.zip'
+                bdot_zip = 'bdot10k_{}.zip'
+            elif self.bdot10kDataFormat == 'GPKG':
+                url = 'https://opendata.geoportal.gov.pl/bdot10k/schemat2021/GPKG/{}/{}_GPKG.zip'
+                bdot_zip = 'bdot10k_GPKG_{}.zip'
 
         for teryt in self.powiatyTerytList:
             request = QNetworkRequest(QUrl(url.format(teryt[:2], teryt)))
