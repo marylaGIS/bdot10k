@@ -159,21 +159,25 @@ class BDOT10k:
         
         # show the dialog
         self.dlg.show()
-
+        
         self.dlg.btnClearCb.clicked.connect(self.clear_checkboxes)
+        self.dlg.gbOldSchema.clicked.connect(self.switch_rbtns_dlg)
     
     def download_bdot10k_zip(self):
         downloadPath = self.dlg.dwnlPath.filePath()
         
         if self.dlg.gbOldSchema.isChecked():
             oldSchema = True
-            if self.dlg.rbtnSHP.isChecked():
+            if self.dlg.rbtnSHPold.isChecked():
                 bdot10kDataFormat = 'SHP'
-            elif self.dlg.rbtnGML.isChecked():
+            elif self.dlg.rbtnGMLold.isChecked():
                 bdot10kDataFormat = 'GML'
         else:
             oldSchema = False
-            bdot10kDataFormat = None
+            if self.dlg.rbtnGML.isChecked():
+                bdot10kDataFormat = 'GML'
+            elif self.dlg.rbtnGPKG.isChecked():
+                bdot10kDataFormat = 'GPKG'
         
         # create a list with all checked checkboxes
         qcbList = self.dlg.findChildren(QCheckBox)
@@ -218,6 +222,22 @@ class BDOT10k:
         qcbList = self.dlg.findChildren(QCheckBox)
         for qcb in qcbList:
             qcb.setChecked(False)
+            
+    def switch_rbtns_dlg(self):
+        if self.dlg.gbOldSchema.isChecked():
+            self.dlg.rbtnGML.setDisabled(True)
+            self.dlg.rbtnGPKG.setDisabled(True)
+        else:
+            self.dlg.rbtnGML.setDisabled(False)
+            self.dlg.rbtnGPKG.setDisabled(False)
+    
+    def switch_rbtns_dlgByLayer(self):
+        if self.dlgByLayer.gbOldSchema.isChecked():
+            self.dlgByLayer.rbtnGML.setDisabled(True)
+            self.dlgByLayer.rbtnGPKG.setDisabled(True)
+        else:
+            self.dlgByLayer.rbtnGML.setDisabled(False)
+            self.dlgByLayer.rbtnGPKG.setDisabled(False)
     
     def run_by_layer(self):
         #if self.first_start == True:
@@ -231,6 +251,7 @@ class BDOT10k:
         
         self.dlgByLayer.mcbLayer.layerChanged.connect(self.select_by_layer)
         self.dlgByLayer.btnDwnl.clicked.connect(self.download_by_layer)
+        self.dlgByLayer.gbOldSchema.clicked.connect(self.switch_rbtns_dlgByLayer)
 
         if self.dlgByLayer.txt:
             self.dlgByLayer.txt.clear()
@@ -306,13 +327,16 @@ class BDOT10k:
             
             if self.dlgByLayer.gbOldSchema.isChecked():
                 oldSchema = True
-                if self.dlgByLayer.rbtnSHP.isChecked():
+                if self.dlgByLayer.rbtnSHPold.isChecked():
                     bdot10kDataFormat = 'SHP'
-                elif self.dlgByLayer.rbtnGML.isChecked():
+                elif self.dlgByLayer.rbtnGMLold.isChecked():
                     bdot10kDataFormat = 'GML'
             else:
                 oldSchema = False
-                bdot10kDataFormat = None
+                if self.dlgByLayer.rbtnGML.isChecked():
+                    bdot10kDataFormat = 'GML'
+                elif self.dlgByLayer.rbtnGPKG.isChecked():
+                    bdot10kDataFormat = 'GPKG'
 
             if self.check_dwnl_path(downloadPath):
                 QgsMessageLog.logMessage(f'Lokalizacja pobierania: {downloadPath}', 'BDOT10k', level=Qgis.MessageLevel.Info)
