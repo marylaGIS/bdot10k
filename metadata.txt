@@ -6,7 +6,7 @@
 name=BDOT10k
 qgisMinimumVersion=3.0
 description=Wtyczka do pobierania danych BDOT10k. Plugin for downloading BDOT10k data.
-version=1.1.1
+version=1.2.0
 author=Maryla Jeż
 email=maryla4gis@gmail.com
 
@@ -32,10 +32,12 @@ repository=https://github.com/marylaGIS/bdot10k
 hasProcessingProvider=no
 # Uncomment the following line and add your changelog:
 changelog=
+	1.2.0
+	- dodano format GPKG
 	1.1.1
-	- przywrócono linki do pobierania danych w starym schemacie
+	- przywrócono linki do pobierania danych w starym schemacie (SHP i GML)
 	1.0.1
-	- poprawiono linki do pobierania danych w nowym schemacie
+	- poprawiono linki do pobierania danych w nowym schemacie (GML)
 	1.0
 	- dodano możliwość wyselekcjonowania powiatów na podstawie przecięcia z warstwą wektorową
 	0.1
