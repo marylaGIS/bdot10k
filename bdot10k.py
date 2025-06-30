@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 /***************************************************************************
  BDOT10k
@@ -12,13 +11,15 @@
         email                : maryla4gis@gmail.com
  ***************************************************************************/
 """
-from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
+
+import os
+
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QAction, QFileDialog, QMessageBox, QCheckBox
+from qgis.PyQt.QtWidgets import QAction, QMessageBox, QCheckBox
 
 from qgis import processing
 from qgis.core import (Qgis, QgsMessageLog, QgsApplication,
-                       QgsMapLayerProxyModel, QgsVectorLayer, 
+                       QgsMapLayerProxyModel, QgsVectorLayer,
                        QgsCoordinateReferenceSystem)
 
 # Initialize Qt resources from file resources.py
@@ -30,7 +31,6 @@ from .bdot10k_dialog_info import BDOT10kDialogInfo
 # Import the code for the tasks
 from .task_dwnl_bdot import DownloadBdotTask
 
-import os
 
 class BDOT10k:
     """QGIS Plugin Implementation."""
@@ -47,32 +47,14 @@ class BDOT10k:
         self.iface = iface
         # initialize plugin directory
         self.plugin_dir = os.path.dirname(__file__)
-        # initialize locale
-        locale = QSettings().value('locale/userLocale')[0:2]
-        locale_path = os.path.join(
-            self.plugin_dir,
-            'i18n',
-            'BDOT10k_{}.qm'.format(locale))
-
-        if os.path.exists(locale_path):
-            self.translator = QTranslator()
-            self.translator.load(locale_path)
-            QCoreApplication.installTranslator(self.translator)
-
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&BDOT10k')
-        
+        self.menu = 'BDOT10k'
         self.taskManager = QgsApplication.taskManager()
 
         # Check if plugin was started the first time in current QGIS session
         # Must be set in initGui() to survive plugin reloads
         self.first_start = None
-
-    # noinspection PyMethodMayBeStatic
-    def tr(self, message):
-        # noinspection PyTypeChecker,PyArgumentList,PyCallByClass
-        return QCoreApplication.translate('BDOT10k', message)
 
     def add_action(
         self,
@@ -116,21 +98,21 @@ class BDOT10k:
         icon_path = ':/plugins/bdot10k/icon.png'
         self.add_action(
             icon_path,
-            text=self.tr(u'Pobierz paczki .zip BDOT10k'),
+            text='Pobierz paczki .zip BDOT10k',
             callback=self.run,
             parent=self.iface.mainWindow())
-            
+
         icon_path = ':/plugins/bdot10k/icon2.png'
         self.add_action(
             icon_path,
-            text=self.tr(u'Pobierz BDOT10k według warstwy'),
+            text='Pobierz BDOT10k według warstwy',
             callback=self.run_by_layer,
             parent=self.iface.mainWindow()
         )
-        
+
         self.add_action(
             icon_path=None,
-            text=self.tr(u'Informacje'),
+            text='Informacje',
             callback=self.info,
             parent=self.iface.mainWindow(),
             add_to_toolbar=False
@@ -141,11 +123,12 @@ class BDOT10k:
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
+
         for action in self.actions:
             self.iface.removePluginMenu(
-                self.tr(u'&BDOT10k'),
+                self.menu,
                 action)
-            self.iface.removeToolBarIcon(action)  
+            self.iface.removeToolBarIcon(action)
 
     def run(self):
         """Run method that performs all the real work"""
@@ -156,16 +139,16 @@ class BDOT10k:
             self.first_start = False
             self.dlg = BDOT10kDialogBase()
             self.dlg.btnDwnl.clicked.connect(self.download_bdot10k_zip)
-        
+
         # show the dialog
         self.dlg.show()
-        
+
         self.dlg.btnClearCb.clicked.connect(self.clear_checkboxes)
         self.dlg.gbOldSchema.clicked.connect(self.switch_rbtns_dlg)
-    
+
     def download_bdot10k_zip(self):
         downloadPath = self.dlg.dwnlPath.filePath()
-        
+
         if self.dlg.gbOldSchema.isChecked():
             oldSchema = True
             if self.dlg.rbtnSHPold.isChecked():
@@ -178,7 +161,7 @@ class BDOT10k:
                 bdot10kDataFormat = 'GML'
             elif self.dlg.rbtnGPKG.isChecked():
                 bdot10kDataFormat = 'GPKG'
-        
+
         # create a list with all checked checkboxes
         qcbList = self.dlg.findChildren(QCheckBox)
         checkBoxList = []
@@ -222,7 +205,7 @@ class BDOT10k:
         qcbList = self.dlg.findChildren(QCheckBox)
         for qcb in qcbList:
             qcb.setChecked(False)
-            
+
     def switch_rbtns_dlg(self):
         if self.dlg.gbOldSchema.isChecked():
             self.dlg.rbtnGML.setDisabled(True)
@@ -230,7 +213,7 @@ class BDOT10k:
         else:
             self.dlg.rbtnGML.setDisabled(False)
             self.dlg.rbtnGPKG.setDisabled(False)
-    
+
     def switch_rbtns_dlgByLayer(self):
         if self.dlgByLayer.gbOldSchema.isChecked():
             self.dlgByLayer.rbtnGML.setDisabled(True)
@@ -238,33 +221,33 @@ class BDOT10k:
         else:
             self.dlgByLayer.rbtnGML.setDisabled(False)
             self.dlgByLayer.rbtnGPKG.setDisabled(False)
-    
+
     def run_by_layer(self):
-        #if self.first_start == True:
-            #self.first_start = False
+        # if self.first_start == True:
+            # self.first_start = False
         self.dlgByLayer = BDOT10kDialogByLayer()
 
         # set filters for the map layer combo box - only vector layers
-        self.dlgByLayer.mcbLayer.setFilters(QgsMapLayerProxyModel.PointLayer | \
-                                            QgsMapLayerProxyModel.LineLayer | \
+        self.dlgByLayer.mcbLayer.setFilters(QgsMapLayerProxyModel.PointLayer |
+                                            QgsMapLayerProxyModel.LineLayer |
                                             QgsMapLayerProxyModel.PolygonLayer)
-        
+
         self.dlgByLayer.mcbLayer.layerChanged.connect(self.select_by_layer)
         self.dlgByLayer.btnDwnl.clicked.connect(self.download_by_layer)
         self.dlgByLayer.gbOldSchema.clicked.connect(self.switch_rbtns_dlgByLayer)
 
         if self.dlgByLayer.txt:
             self.dlgByLayer.txt.clear()
-        
+
         global powiatyTerytByLayer
         powiatyTerytByLayer = []
-        
+
         if powiatyTerytByLayer:
             powiatyTerytByLayer = []
-        
+
         # show the dialog
         self.dlgByLayer.show()
-    
+
     def select_by_layer(self):
         layerForSelection = self.dlgByLayer.mcbLayer.currentLayer()
         layerPowiatyPath = os.path.join(self.plugin_dir, "powiaty.geojson")
@@ -285,7 +268,7 @@ class BDOT10k:
                         'TARGET_CRS':QgsCoordinateReferenceSystem('EPSG:2180'),
                         'OUTPUT':'TEMPORARY_OUTPUT'}
                     )['OUTPUT']
-                
+
                 powiatySelection = processing.run("native:selectbylocation",
                     {'INPUT': layerPowiaty,
                     'PREDICATE': [0],
@@ -301,30 +284,30 @@ class BDOT10k:
                     for feature in powiatySelected:
                         powiatyTerytByLayer.append(feature["teryt"])
                         powiatyTxt += feature["teryt"] + " " + feature["nazwa"] + ", "
-                    
+
                     powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(powiatyTerytByLayer)}"
                     self.dlgByLayer.txt.clear()
                     self.dlgByLayer.txt.append(powiatyCount)
                     self.dlgByLayer.txt.append(powiatyTxt)
 
                     return powiatyTerytByLayer
-                    
+
                 else:
                     powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(powiatyTerytByLayer)}"
                     self.dlgByLayer.txt.clear()
                     self.dlgByLayer.txt.append(powiatyCount)
                     QMessageBox.critical(self.dlgByLayer, "Błąd", "Nie znaleziono żadnych powiatów.")
-                    
+
                 return powiatyTerytByLayer
-                
+
         return powiatyTerytByLayer
-    
+
     def download_by_layer(self):
         if not powiatyTerytByLayer:
             QMessageBox.critical(self.dlgByLayer, "Błąd", "Brak powiatów do pobrania.")
         else:
             downloadPath = self.dlgByLayer.dwnlPath.filePath()
-            
+
             if self.dlgByLayer.gbOldSchema.isChecked():
                 oldSchema = True
                 if self.dlgByLayer.rbtnSHPold.isChecked():
@@ -352,7 +335,7 @@ class BDOT10k:
                 )
 
                 self.taskManager.addTask(task)
-    
+
     def info(self):
         self.dlgInfo = BDOT10kDialogInfo()
         self.dlgInfo.show()
