@@ -131,65 +131,8 @@ class BDOT10k:
             self.iface.removeToolBarIcon(action)
 
     def run(self):
-        """Run method that performs all the real work"""
-
-        # Create the dialog with elements (after translation) and keep reference
-        # Only create GUI ONCE in callback, so that it will only load when the plugin is started
-        if self.first_start == True:
-            self.first_start = False
-            self.dlg = BDOT10kDialogBase()
-            self.dlg.btnDwnl.clicked.connect(self.download_bdot10k_zip)
-
-        # show the dialog
+        self.dlg = BDOT10kDialogBase()
         self.dlg.show()
-
-        self.dlg.btnClearCb.clicked.connect(self.clear_checkboxes)
-        self.dlg.gbOldSchema.clicked.connect(self.switch_rbtns_dlg)
-
-    def download_bdot10k_zip(self):
-        downloadPath = self.dlg.dwnlPath.filePath()
-
-        if self.dlg.gbOldSchema.isChecked():
-            oldSchema = True
-            if self.dlg.rbtnSHPold.isChecked():
-                bdot10kDataFormat = 'SHP'
-            elif self.dlg.rbtnGMLold.isChecked():
-                bdot10kDataFormat = 'GML'
-        else:
-            oldSchema = False
-            if self.dlg.rbtnGML.isChecked():
-                bdot10kDataFormat = 'GML'
-            elif self.dlg.rbtnGPKG.isChecked():
-                bdot10kDataFormat = 'GPKG'
-
-        # create a list with all checked checkboxes
-        qcbList = self.dlg.findChildren(QCheckBox)
-        checkBoxList = []
-        for qcb in qcbList:
-            if qcb.isChecked():
-                checkBoxList.append(qcb.objectName()[-4:])
-
-        # use separate funciotn for checking if dwnl path is correct
-        if self.check_dwnl_path(downloadPath) == True and len(checkBoxList) >= 1:
-            QgsMessageLog.logMessage(f'Lokalizacja pobierania: {downloadPath}', 'BDOT10k', level=Qgis.MessageLevel.Info)
-            QgsMessageLog.logMessage('Lista teryt wybranych powiatów: ' + str(sorted(checkBoxList)), 'BDOT10k', level=Qgis.MessageLevel.Info)
-
-            # use QgsTask class for downloading BDOT10k in the background
-            task = DownloadBdotTask(
-                description="Pobieranie paczek BDOT10k",
-                downloadPath=downloadPath,
-                oldSchema=oldSchema,
-                bdot10kDataFormat=bdot10kDataFormat,
-                powiatyTerytList=checkBoxList,
-                iface=self.iface
-            )
-
-            self.taskManager.addTask(task)
-
-        elif len(checkBoxList) == 0:
-            QMessageBox.critical(self.dlg, "Błąd", "Wybierz powiat(y) do pobrania BDTO10k.")
-        else:
-            return False
 
     def check_dwnl_path(self, downloadPath):
         if not downloadPath:
@@ -200,19 +143,6 @@ class BDOT10k:
             return False
         else:
             return True
-
-    def clear_checkboxes(self):
-        qcbList = self.dlg.findChildren(QCheckBox)
-        for qcb in qcbList:
-            qcb.setChecked(False)
-
-    def switch_rbtns_dlg(self):
-        if self.dlg.gbOldSchema.isChecked():
-            self.dlg.rbtnGML.setDisabled(True)
-            self.dlg.rbtnGPKG.setDisabled(True)
-        else:
-            self.dlg.rbtnGML.setDisabled(False)
-            self.dlg.rbtnGPKG.setDisabled(False)
 
     def switch_rbtns_dlgByLayer(self):
         if self.dlgByLayer.gbOldSchema.isChecked():

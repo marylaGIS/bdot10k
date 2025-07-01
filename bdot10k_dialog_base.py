@@ -24,7 +24,12 @@
 import os
 
 from qgis.PyQt import uic
-from qgis.PyQt.QtWidgets import QDialog
+from qgis.PyQt.QtWidgets import QCheckBox, QDialog, QMessageBox
+
+from qgis.core import QgsApplication
+from qgis.utils import iface
+
+from .task_dwnl_bdot import DownloadBdotTask
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
@@ -41,3 +46,72 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
+
+        self.iface = iface
+        self.taskManager = QgsApplication.taskManager()
+
+        self.btnClearCb.clicked.connect(self.clear_checkboxes)
+        self.gbOldSchema.clicked.connect(self.switch_rbtns_dlg)
+
+    def checkDownloadPath(self, downloadPath):
+        if not downloadPath:
+            QMessageBox.critical(self, "Błąd", "Wskaż lokalizację pobierania.")
+            return False
+        elif not os.path.exists(downloadPath):
+            QMessageBox.critical(self, "Błąd", "Podana lokalizacja nie istnieje.")
+            return False
+        else:
+            return True
+
+    def clear_checkboxes(self):
+        qcbList = self.findChildren(QCheckBox)
+        for qcb in qcbList:
+            qcb.setChecked(False)
+
+    def switch_rbtns_dlg(self):
+        if self.gbOldSchema.isChecked():
+            self.rbtnGML.setDisabled(True)
+            self.rbtnGPKG.setDisabled(True)
+        else:
+            self.rbtnGML.setDisabled(False)
+            self.rbtnGPKG.setDisabled(False)
+
+    def on_btnDwnl_clicked(self):
+        downloadPath = self.dwnlPath.filePath()
+
+        if self.gbOldSchema.isChecked():
+            oldSchema = True
+            if self.rbtnSHPold.isChecked():
+                bdot10kDataFormat = 'SHP'
+            elif self.rbtnGMLold.isChecked():
+                bdot10kDataFormat = 'GML'
+        else:
+            oldSchema = False
+            if self.rbtnGML.isChecked():
+                bdot10kDataFormat = 'GML'
+            elif self.rbtnGPKG.isChecked():
+                bdot10kDataFormat = 'GPKG'
+
+        qcbList = self.findChildren(QCheckBox)
+        checkBoxList = []
+        for qcb in qcbList:
+            if qcb.isChecked():
+                checkBoxList.append(qcb.objectName()[-4:])
+
+        if self.checkDownloadPath(downloadPath) == True and len(checkBoxList) >= 1:
+
+            task = DownloadBdotTask(
+                description="Pobieranie paczek BDOT10k",
+                downloadPath=downloadPath,
+                oldSchema=oldSchema,
+                bdot10kDataFormat=bdot10kDataFormat,
+                powiatyTerytList=checkBoxList,
+                iface=self.iface
+            )
+
+            self.taskManager.addTask(task)
+
+        elif len(checkBoxList) == 0:
+            QMessageBox.critical(self, "Błąd", "Wybierz powiat(y) do pobrania BDTO10k.")
+        else:
+            return False
