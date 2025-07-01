@@ -24,6 +24,7 @@
 import os
 
 from qgis.PyQt import uic
+from qgis.PyQt.QtCore import pyqtSlot
 from qgis.PyQt.QtWidgets import QCheckBox, QDialog, QMessageBox
 
 from qgis.core import QgsApplication
@@ -76,6 +77,7 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
             self.rbtnGML.setDisabled(False)
             self.rbtnGPKG.setDisabled(False)
 
+    @pyqtSlot()
     def on_btnDwnl_clicked(self):
         downloadPath = self.dwnlPath.filePath()
 
