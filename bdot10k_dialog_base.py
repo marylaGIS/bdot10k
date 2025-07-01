@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 /***************************************************************************
  BDOT10k_pluginDialog
@@ -25,17 +24,17 @@
 import os
 
 from qgis.PyQt import uic
-from qgis.PyQt import QtWidgets
+from qgis.PyQt.QtWidgets import QDialog
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'bdot10k_dialog_base.ui'))
 
 
-class BDOT10kDialogBase(QtWidgets.QDialog, FORM_CLASS):
+class BDOT10kDialogBase(QDialog, FORM_CLASS):
     def __init__(self, parent=None):
         """Constructor."""
-        super(BDOT10kDialogBase, self).__init__(parent)
+        super().__init__(parent)
         # Set up the user interface from Designer through FORM_CLASS.
         # After self.setupUi() you can access any designer object by doing
         # self.<objectname>, and you can use autoconnect slots - see
