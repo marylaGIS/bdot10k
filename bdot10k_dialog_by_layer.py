@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 /***************************************************************************
  BDOT10k_pluginDialog
@@ -25,20 +24,145 @@
 import os
 
 from qgis.PyQt import uic
-from qgis.PyQt import QtWidgets
+from qgis.PyQt.QtWidgets import QDialog, QMessageBox
+
+from qgis import processing
+from qgis.core import (Qgis, QgsMessageLog, QgsApplication,
+                       QgsMapLayerProxyModel, QgsVectorLayer,
+                       QgsCoordinateReferenceSystem)
+from qgis.utils import iface
+
+from .task_dwnl_bdot import DownloadBdotTask
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'bdot10k_dialog_by_layer.ui'))
 
 
-class BDOT10kDialogByLayer(QtWidgets.QDialog, FORM_CLASS):
+class BDOT10kDialogByLayer(QDialog, FORM_CLASS):
     def __init__(self, parent=None):
         """Constructor."""
-        super(BDOT10kDialogByLayer, self).__init__(parent)
+        super().__init__(parent)
         # Set up the user interface from Designer through FORM_CLASS.
         # After self.setupUi() you can access any designer object by doing
         # self.<objectname>, and you can use autoconnect slots - see
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
+
+        self.plugin_dir = os.path.dirname(__file__)
+        self.powiatyTerytByLayer = []
+        self.taskManager = QgsApplication.taskManager()
+
+        # set filters for the map layer combo box - only vector layers
+        self.mcbLayer.setFilters(QgsMapLayerProxyModel.PointLayer |
+                                            QgsMapLayerProxyModel.LineLayer |
+                                            QgsMapLayerProxyModel.PolygonLayer)
+        self.txt.clear()
+
+        self.btnDwnl.clicked.connect(self.download_by_layer)
+        self.mcbLayer.layerChanged.connect(self.select_by_layer)
+        self.gbOldSchema.clicked.connect(self.switch_rbtns_dlgByLayer)
+
+    def check_dwnl_path(self, downloadPath):
+        if not downloadPath:
+            QMessageBox.critical(None, "Błąd", "Wskaż lokalizację pobierania.")
+            return False
+        elif not os.path.exists(downloadPath):
+            QMessageBox.critical(None, "Błąd", "Podana lokalizacja nie istnieje.")
+            return False
+        else:
+            return True
+
+    def switch_rbtns_dlgByLayer(self):
+        if self.gbOldSchema.isChecked():
+            self.rbtnGML.setDisabled(True)
+            self.rbtnGPKG.setDisabled(True)
+        else:
+            self.rbtnGML.setDisabled(False)
+            self.rbtnGPKG.setDisabled(False)
+
+    def select_by_layer(self):
+        layerForSelection = self.mcbLayer.currentLayer()
+        layerPowiatyPath = os.path.join(self.plugin_dir, "powiaty.geojson")
+        layerPowiaty = QgsVectorLayer(layerPowiatyPath, "powiaty", "ogr")
+
+        if self.isVisible():
+            if not layerForSelection:
+                QMessageBox.warning(self, "Uwaga", "Wybierz warstwę wektorową.")
+            elif layerForSelection and layerForSelection.featureCount() == 0:
+                QMessageBox.warning(self, "Uwaga", "Wybrana warstwa nie zawiera obiektów.")
+            else:                
+                if layerPowiaty.crs() != QgsCoordinateReferenceSystem('EPSG:2180'):
+                    layerPowiaty = processing.run("native:reprojectlayer", 
+                        {'INPUT':layerPowiaty,
+                        'TARGET_CRS':QgsCoordinateReferenceSystem('EPSG:2180'),
+                        'OUTPUT':'TEMPORARY_OUTPUT'}
+                    )['OUTPUT']
+
+                powiatySelection = processing.run("native:selectbylocation",
+                    {'INPUT': layerPowiaty,
+                    'PREDICATE': [0],
+                    'INTERSECT': layerForSelection,
+                    'METHOD': 0}
+                )
+
+                powiatySelected = powiatySelection['OUTPUT'].selectedFeatures()
+
+                powiatyTxt = "Powiaty: "
+
+                if powiatySelected:
+                    for feature in powiatySelected:
+                        self.powiatyTerytByLayer.append(feature["teryt"])
+                        powiatyTxt += feature["teryt"] + " " + feature["nazwa"] + ", "
+
+                    powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(self.powiatyTerytByLayer)}"
+                    self.txt.clear()
+                    self.txt.append(powiatyCount)
+                    self.txt.append(powiatyTxt)
+
+                    return self.powiatyTerytByLayer
+
+                else:
+                    powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(self.powiatyTerytByLayer)}"
+                    self.txt.clear()
+                    self.txt.append(powiatyCount)
+                    QMessageBox.critical(self, "Błąd", "Nie znaleziono żadnych powiatów.")
+
+                return self.powiatyTerytByLayer
+
+        return self.powiatyTerytByLayer
+
+    def download_by_layer(self):
+        if not self.powiatyTerytByLayer:
+            QMessageBox.critical(self, "Błąd", "Brak powiatów do pobrania.")
+        else:
+            downloadPath = self.dwnlPath.filePath()
+
+            if self.gbOldSchema.isChecked():
+                oldSchema = True
+                if self.rbtnSHPold.isChecked():
+                    bdot10kDataFormat = 'SHP'
+                elif self.rbtnGMLold.isChecked():
+                    bdot10kDataFormat = 'GML'
+            else:
+                oldSchema = False
+                if self.rbtnGML.isChecked():
+                    bdot10kDataFormat = 'GML'
+                elif self.rbtnGPKG.isChecked():
+                    bdot10kDataFormat = 'GPKG'
+
+            if self.check_dwnl_path(downloadPath):
+                QgsMessageLog.logMessage(f'Lokalizacja pobierania: {downloadPath}', 'BDOT10k', level=Qgis.MessageLevel.Info)
+                QgsMessageLog.logMessage('Pobieranie paczek dla powiatów: ' + str(sorted(self.powiatyTerytByLayer)), 'BDOT10k', level=Qgis.MessageLevel.Info)
+
+                task = DownloadBdotTask(
+                    description="Pobieranie paczek BDOT10k",
+                    downloadPath=downloadPath,
+                    oldSchema=oldSchema,
+                    bdot10kDataFormat=bdot10kDataFormat,
+                    powiatyTerytList=self.powiatyTerytByLayer,
+                    iface=iface
+                )
+
+                self.taskManager.addTask(task)
