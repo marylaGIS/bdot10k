@@ -24,6 +24,7 @@
 import os
 
 from qgis.PyQt import uic
+from qgis.PyQt.QtCore import pyqtSlot
 from qgis.PyQt.QtWidgets import QDialog, QMessageBox
 
 from qgis import processing
@@ -60,10 +61,6 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS):
                                             QgsMapLayerProxyModel.PolygonLayer)
         self.txt.clear()
 
-        self.btnDwnl.clicked.connect(self.download_by_layer)
-        self.mcbLayer.layerChanged.connect(self.select_by_layer)
-        self.gbOldSchema.clicked.connect(self.switch_rbtns_dlgByLayer)
-
     def check_dwnl_path(self, downloadPath):
         if not downloadPath:
             QMessageBox.critical(None, "Błąd", "Wskaż lokalizację pobierania.")
@@ -74,7 +71,7 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS):
         else:
             return True
 
-    def switch_rbtns_dlgByLayer(self):
+    def on_gbOldSchema_toggled(self):
         if self.gbOldSchema.isChecked():
             self.rbtnGML.setDisabled(True)
             self.rbtnGPKG.setDisabled(True)
@@ -82,7 +79,7 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS):
             self.rbtnGML.setDisabled(False)
             self.rbtnGPKG.setDisabled(False)
 
-    def select_by_layer(self):
+    def on_mcbLayer_layerChanged(self):
         layerForSelection = self.mcbLayer.currentLayer()
         layerPowiatyPath = os.path.join(self.plugin_dir, "powiaty.geojson")
         layerPowiaty = QgsVectorLayer(layerPowiatyPath, "powiaty", "ogr")
@@ -133,7 +130,8 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS):
 
         return self.powiatyTerytByLayer
 
-    def download_by_layer(self):
+    @pyqtSlot()
+    def on_btnDwnl_clicked(self):
         if not self.powiatyTerytByLayer:
             QMessageBox.critical(self, "Błąd", "Brak powiatów do pobrania.")
         else:

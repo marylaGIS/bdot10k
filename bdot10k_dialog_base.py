@@ -48,11 +48,7 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
 
-        self.iface = iface
         self.taskManager = QgsApplication.taskManager()
-
-        self.btnClearCb.clicked.connect(self.clear_checkboxes)
-        self.gbOldSchema.clicked.connect(self.switch_rbtns_dlg)
 
     def checkDownloadPath(self, downloadPath):
         if not downloadPath:
@@ -64,12 +60,14 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
         else:
             return True
 
-    def clear_checkboxes(self):
+    @pyqtSlot()
+    def on_btnClearCb_clicked(self):
+        print('on_btnClearCb_clicked')
         qcbList = self.findChildren(QCheckBox)
         for qcb in qcbList:
             qcb.setChecked(False)
 
-    def switch_rbtns_dlg(self):
+    def on_gbOldSchema_toggled(self):
         if self.gbOldSchema.isChecked():
             self.rbtnGML.setDisabled(True)
             self.rbtnGPKG.setDisabled(True)
@@ -108,7 +106,7 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
                 oldSchema=oldSchema,
                 bdot10kDataFormat=bdot10kDataFormat,
                 powiatyTerytList=checkBoxList,
-                iface=self.iface
+                iface=iface
             )
 
             self.taskManager.addTask(task)
