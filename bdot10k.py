@@ -12,15 +12,8 @@
  ***************************************************************************/
 """
 
-import os
-
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QAction, QMessageBox, QCheckBox
-
-from qgis import processing
-from qgis.core import (Qgis, QgsMessageLog, QgsApplication,
-                       QgsMapLayerProxyModel, QgsVectorLayer,
-                       QgsCoordinateReferenceSystem)
+from qgis.PyQt.QtWidgets import QAction
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -28,8 +21,6 @@ from .resources import *
 from .bdot10k_dialog_base import BDOT10kDialogBase
 from .bdot10k_dialog_by_layer import BDOT10kDialogByLayer
 from .bdot10k_dialog_info import BDOT10kDialogInfo
-# Import the code for the tasks
-from .task_dwnl_bdot import DownloadBdotTask
 
 
 class BDOT10k:
@@ -45,16 +36,12 @@ class BDOT10k:
         """
         # Save reference to the QGIS interface
         self.iface = iface
-        # initialize plugin directory
-        self.plugin_dir = os.path.dirname(__file__)
         # Declare instance attributes
         self.actions = []
-        self.menu = 'BDOT10k'
-        self.taskManager = QgsApplication.taskManager()
-
-        # Check if plugin was started the first time in current QGIS session
-        # Must be set in initGui() to survive plugin reloads
-        self.first_start = None
+        self.dlg = None
+        self.dlg_by_layer = None
+        self.dlg_info = None
+        self.menu = "BDOT10k"
 
     def add_action(
         self,
@@ -95,31 +82,28 @@ class BDOT10k:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ':/plugins/bdot10k/icon.png'
+        icon_path = ":/plugins/bdot10k/icon.png"
         self.add_action(
             icon_path,
-            text='Pobierz paczki .zip BDOT10k',
+            text="Pobierz paczki .zip BDOT10k",
             callback=self.run,
             parent=self.iface.mainWindow())
 
-        icon_path = ':/plugins/bdot10k/icon2.png'
+        icon_path = ":/plugins/bdot10k/icon2.png"
         self.add_action(
             icon_path,
-            text='Pobierz BDOT10k według warstwy',
+            text="Pobierz BDOT10k według warstwy",
             callback=self.run_by_layer,
             parent=self.iface.mainWindow()
         )
 
         self.add_action(
             icon_path=None,
-            text='Informacje',
+            text="Informacje",
             callback=self.info,
             parent=self.iface.mainWindow(),
             add_to_toolbar=False
         )
-
-        # will be set False in run()
-        self.first_start = True
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
@@ -131,13 +115,21 @@ class BDOT10k:
             self.iface.removeToolBarIcon(action)
 
     def run(self):
+        """Displays a dialog for downloading BDOT10k data
+        by selecting counties."""
+
         self.dlg = BDOT10kDialogBase()
         self.dlg.show()
 
     def run_by_layer(self):
-        self.dlgByLayer = BDOT10kDialogByLayer()
-        self.dlgByLayer.show()
+        """Displays a dialog for downloading BDOT10k data
+        based on intersection with the given layer."""
+
+        self.dlg_by_layer = BDOT10kDialogByLayer()
+        self.dlg_by_layer.show()
 
     def info(self):
-        self.dlgInfo = BDOT10kDialogInfo()
-        self.dlgInfo.show()
+        """Displays a dialog with additional information."""
+
+        self.dlg_info = BDOT10kDialogInfo()
+        self.dlg_info.show()
