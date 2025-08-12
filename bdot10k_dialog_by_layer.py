@@ -33,6 +33,7 @@ from qgis.core import (Qgis, QgsMessageLog, QgsApplication,
                        QgsCoordinateReferenceSystem)
 from qgis.utils import iface
 
+from .utils import *
 from .task_dwnl_bdot import DownloadBdotTask
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
@@ -60,16 +61,6 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS):
                                             QgsMapLayerProxyModel.LineLayer |
                                             QgsMapLayerProxyModel.PolygonLayer)
         self.txt.clear()
-
-    def check_dwnl_path(self, downloadPath):
-        if not downloadPath:
-            QMessageBox.critical(None, "Błąd", "Wskaż lokalizację pobierania.")
-            return False
-        elif not os.path.exists(downloadPath):
-            QMessageBox.critical(None, "Błąd", "Podana lokalizacja nie istnieje.")
-            return False
-        else:
-            return True
 
     def on_gbOldSchema_toggled(self):
         if self.gbOldSchema.isChecked():
@@ -150,7 +141,7 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS):
                 elif self.rbtnGPKG.isChecked():
                     bdot10kDataFormat = 'GPKG'
 
-            if self.check_dwnl_path(downloadPath):
+            if check_dwnl_path(downloadPath):
                 QgsMessageLog.logMessage(f'Lokalizacja pobierania: {downloadPath}', 'BDOT10k', level=Qgis.MessageLevel.Info)
                 QgsMessageLog.logMessage('Pobieranie paczek dla powiatów: ' + str(sorted(self.powiatyTerytByLayer)), 'BDOT10k', level=Qgis.MessageLevel.Info)
 

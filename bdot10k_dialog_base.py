@@ -30,6 +30,7 @@ from qgis.PyQt.QtWidgets import QCheckBox, QDialog, QMessageBox
 from qgis.core import QgsApplication
 from qgis.utils import iface
 
+from .utils import *
 from .task_dwnl_bdot import DownloadBdotTask
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
@@ -49,16 +50,6 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
         self.setupUi(self)
 
         self.taskManager = QgsApplication.taskManager()
-
-    def checkDownloadPath(self, downloadPath):
-        if not downloadPath:
-            QMessageBox.critical(self, "Błąd", "Wskaż lokalizację pobierania.")
-            return False
-        elif not os.path.exists(downloadPath):
-            QMessageBox.critical(self, "Błąd", "Podana lokalizacja nie istnieje.")
-            return False
-        else:
-            return True
 
     @pyqtSlot()
     def on_btnClearCb_clicked(self):
@@ -98,7 +89,7 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
             if qcb.isChecked():
                 checkBoxList.append(qcb.objectName()[-4:])
 
-        if self.checkDownloadPath(downloadPath) == True and len(checkBoxList) >= 1:
+        if check_dwnl_path(downloadPath) == True and len(checkBoxList) >= 1:
 
             task = DownloadBdotTask(
                 description="Pobieranie paczek BDOT10k",
