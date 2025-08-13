@@ -53,9 +53,7 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
 
     @pyqtSlot()
     def on_btnClearCb_clicked(self):
-        print('on_btnClearCb_clicked')
-        qcbList = self.findChildren(QCheckBox)
-        for qcb in qcbList:
+        for qcb in self.findChildren(QCheckBox):
             qcb.setChecked(False)
 
     def on_gbOldSchema_toggled(self):
@@ -83,13 +81,13 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
             elif self.rbtnGPKG.isChecked():
                 bdot10kDataFormat = 'GPKG'
 
-        qcbList = self.findChildren(QCheckBox)
-        checkBoxList = []
-        for qcb in qcbList:
-            if qcb.isChecked():
-                checkBoxList.append(qcb.objectName()[-4:])
+        checkBoxList = [
+            qcb.objectName()[-4:]
+            for qcb in self.findChildren(QCheckBox)
+            if qcb.isChecked()
+        ]
 
-        if check_dwnl_path(downloadPath) == True and len(checkBoxList) >= 1:
+        if check_dwnl_path(downloadPath) and checkBoxList:
 
             task = DownloadBdotTask(
                 description="Pobieranie paczek BDOT10k",
@@ -102,7 +100,5 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
 
             self.taskManager.addTask(task)
 
-        elif len(checkBoxList) == 0:
+        elif not checkBoxList:
             QMessageBox.critical(self, "Błąd", "Wybierz powiat(y) do pobrania BDTO10k.")
-        else:
-            return False
