@@ -1,3 +1,6 @@
+from qgis.core import QgsTask
+
+
 class DialogMixin:
     """A mixin class providing shared utility methods
     for dialog components."""
@@ -35,3 +38,18 @@ class DialogMixin:
                 bdot10kDataFormat = 'GPKG'
 
         return oldSchema, bdot10kDataFormat
+
+    def enable_btn_dwnl(self, taskId: int, status: int):
+        """Enables the download button after the current
+        download task is completed.
+
+        :param taskId: The ID of the BDOT10k data download task.
+        :param status: The status reported by the task.
+        """
+
+        if taskId == self.taskId and status in (
+            QgsTask.Complete,
+            QgsTask.Terminated,
+            QgsTask.CancelWithoutPrompt,
+        ):
+            self.btnDwnl.setEnabled(True)

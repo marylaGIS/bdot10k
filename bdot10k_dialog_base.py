@@ -71,6 +71,8 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
 
         if check_dwnl_path(downloadPath) and checkBoxList:
 
+            self.btnDwnl.setEnabled(False)
+
             task = DownloadBdotTask(
                 description="Pobieranie paczek BDOT10k",
                 downloadPath=downloadPath,
@@ -81,6 +83,8 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
             )
 
             self.taskManager.addTask(task)
+            self.taskId = self.taskManager.taskId(task)
+            self.taskManager.statusChanged.connect(self.enable_btn_dwnl)
 
         elif not checkBoxList:
 

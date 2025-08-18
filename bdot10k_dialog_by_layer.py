@@ -124,6 +124,9 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
             oldSchema, bdot10kDataFormat = self.get_bdot10k_data_options()
 
             if check_dwnl_path(downloadPath):
+
+                self.btnDwnl.setEnabled(False)
+
                 QgsMessageLog.logMessage(f'Lokalizacja pobierania: {downloadPath}', 'BDOT10k', level=Qgis.MessageLevel.Info)
                 QgsMessageLog.logMessage('Pobieranie paczek dla powiatów: ' + str(sorted(self.powiatyTerytByLayer)), 'BDOT10k', level=Qgis.MessageLevel.Info)
 
@@ -137,3 +140,6 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
                 )
 
                 self.taskManager.addTask(task)
+                self.taskManager.addTask(task)
+                self.taskId = self.taskManager.taskId(task)
+                self.taskManager.statusChanged.connect(self.enable_btn_dwnl)
