@@ -30,15 +30,16 @@ from qgis.PyQt.QtWidgets import QCheckBox, QDialog, QMessageBox
 from qgis.core import QgsApplication
 from qgis.utils import iface
 
-from .utils import *
+from .dialog_mixin import *
 from .task_dwnl_bdot import DownloadBdotTask
+from .utils import *
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'bdot10k_dialog_base.ui'))
 
 
-class BDOT10kDialogBase(QDialog, FORM_CLASS):
+class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
     def __init__(self, parent=None):
         """Constructor."""
         super().__init__(parent)
@@ -56,30 +57,11 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
         for qcb in self.findChildren(QCheckBox):
             qcb.setChecked(False)
 
-    def on_gbOldSchema_toggled(self):
-        if self.gbOldSchema.isChecked():
-            self.rbtnGML.setDisabled(True)
-            self.rbtnGPKG.setDisabled(True)
-        else:
-            self.rbtnGML.setDisabled(False)
-            self.rbtnGPKG.setDisabled(False)
-
     @pyqtSlot()
     def on_btnDwnl_clicked(self):
         downloadPath = self.dwnlPath.filePath()
 
-        if self.gbOldSchema.isChecked():
-            oldSchema = True
-            if self.rbtnSHPold.isChecked():
-                bdot10kDataFormat = 'SHP'
-            elif self.rbtnGMLold.isChecked():
-                bdot10kDataFormat = 'GML'
-        else:
-            oldSchema = False
-            if self.rbtnGML.isChecked():
-                bdot10kDataFormat = 'GML'
-            elif self.rbtnGPKG.isChecked():
-                bdot10kDataFormat = 'GPKG'
+        oldSchema, bdot10kDataFormat = self.get_bdot10k_data_options()
 
         checkBoxList = [
             qcb.objectName()[-4:]
@@ -101,4 +83,5 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS):
             self.taskManager.addTask(task)
 
         elif not checkBoxList:
+
             QMessageBox.critical(self, "Błąd", "Wybierz powiat(y) do pobrania BDTO10k.")
