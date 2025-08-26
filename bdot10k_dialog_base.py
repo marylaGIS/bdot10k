@@ -53,7 +53,19 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
         self.taskManager = QgsApplication.taskManager()
 
     @pyqtSlot()
-    def on_btnClearCb_clicked(self):
+    def on_btnCheckWoj_clicked(self):
+        currentTab = self.tabWidget.currentWidget()
+        for qcb in currentTab.findChildren(QCheckBox):
+            qcb.setChecked(True)
+
+    @pyqtSlot()
+    def on_btnClearWoj_clicked(self):
+        currentTab = self.tabWidget.currentWidget()
+        for qcb in currentTab.findChildren(QCheckBox):
+            qcb.setChecked(False)
+
+    @pyqtSlot()
+    def on_btnClearAll_clicked(self):
         for qcb in self.findChildren(QCheckBox):
             qcb.setChecked(False)
 
