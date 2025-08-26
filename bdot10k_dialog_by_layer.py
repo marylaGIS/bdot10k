@@ -24,8 +24,9 @@
 import os
 
 from qgis.PyQt import uic
-from qgis.PyQt.QtCore import pyqtSlot
-from qgis.PyQt.QtWidgets import QDialog, QMessageBox
+from qgis.PyQt.QtCore import pyqtSlot, Qt
+from qgis.PyQt.QtGui import QCursor
+from qgis.PyQt.QtWidgets import QApplication, QDialog, QMessageBox
 
 from qgis import processing
 from qgis.core import (Qgis, QgsMessageLog, QgsApplication,
@@ -64,53 +65,57 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
         self.txt.clear()
 
     def on_mcbLayer_layerChanged(self):
-        layerForSelection = self.mcbLayer.currentLayer()
-        layerPowiatyPath = os.path.join(self.plugin_dir, "powiaty.geojson")
-        layerPowiaty = QgsVectorLayer(layerPowiatyPath, "powiaty", "ogr")
+        self.txt.clear()
+        self.powiatyTerytByLayer.clear()
 
-        if self.isVisible():
-            if not layerForSelection:
-                QMessageBox.warning(self, "Uwaga", "Wybierz warstwę wektorową.")
-            elif layerForSelection and layerForSelection.featureCount() == 0:
+        if self.mcbLayer.currentIndex() != -1:
+            selectionLayer = self.mcbLayer.currentLayer()
+        else:
+            return
+
+        try:
+            QApplication.setOverrideCursor(QCursor(Qt.BusyCursor))
+
+            if selectionLayer.featureCount() == 0:
+                QApplication.restoreOverrideCursor()
+                self.txt.append(f'Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}')
                 QMessageBox.warning(self, "Uwaga", "Wybrana warstwa nie zawiera obiektów.")
-            else:                
-                if layerPowiaty.crs() != QgsCoordinateReferenceSystem('EPSG:2180'):
-                    layerPowiaty = processing.run("native:reprojectlayer", 
-                        {'INPUT':layerPowiaty,
-                        'TARGET_CRS':QgsCoordinateReferenceSystem('EPSG:2180'),
-                        'OUTPUT':'TEMPORARY_OUTPUT'}
-                    )['OUTPUT']
-
-                powiatySelection = processing.run("native:selectbylocation",
-                    {'INPUT': layerPowiaty,
-                    'PREDICATE': [0],
-                    'INTERSECT': layerForSelection,
-                    'METHOD': 0}
+            else:
+                powiatyLayer = QgsVectorLayer(
+                    os.path.join(self.plugin_dir, 'powiaty.geojson'),
+                    'powiaty',
+                    'ogr'
                 )
 
-                powiatySelected = powiatySelection['OUTPUT'].selectedFeatures()
+                powiatySelected = processing.run(
+                    "native:selectbylocation",
+                    {'INPUT': powiatyLayer,
+                    'PREDICATE': [0],
+                    'INTERSECT': selectionLayer,
+                    'METHOD': 0}
+                )['OUTPUT'].selectedFeatures()
 
                 powiatyTxt = "Powiaty: "
 
                 if powiatySelected:
                     for feature in powiatySelected:
                         self.powiatyTerytByLayer.append(feature["teryt"])
-                        powiatyTxt += feature["teryt"] + " " + feature["nazwa"] + ", "
+                        powiatyTxt += f'{feature["teryt"]} {feature["nazwa"]}, '
 
-                    powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(self.powiatyTerytByLayer)}"
-                    self.txt.clear()
-                    self.txt.append(powiatyCount)
+                    self.txt.append(f'Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}')
                     self.txt.append(powiatyTxt)
-
-                    return self.powiatyTerytByLayer
-
                 else:
-                    powiatyCount = f"Liczba wyselekcjonowanych powiatów: {len(self.powiatyTerytByLayer)}"
-                    self.txt.clear()
-                    self.txt.append(powiatyCount)
-                    QMessageBox.critical(self, "Błąd", "Nie znaleziono żadnych powiatów.")
-
-                return self.powiatyTerytByLayer
+                    self.txt.append(f'Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}')
+                    QMessageBox.warning(self, "Uwaga", "Wybrana warstwa nie znajduje się na terenie żadnego powiatu.")
+        except Exception as e:
+            QApplication.restoreOverrideCursor()
+            QgsMessageLog.logMessage(
+                f'Wystąpił błąd podczas selekcji powiatów. Treść błędu: {e}',
+                'BDOT10k',
+                Qgis.MessageLevel.Critical
+            )
+        finally:
+            QApplication.restoreOverrideCursor()
 
         return self.powiatyTerytByLayer
 
