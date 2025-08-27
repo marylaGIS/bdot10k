@@ -59,9 +59,7 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
         self.taskManager = QgsApplication.taskManager()
 
         # set filters for the map layer combo box - only vector layers
-        self.mcbLayer.setFilters(QgsMapLayerProxyModel.PointLayer |
-                                            QgsMapLayerProxyModel.LineLayer |
-                                            QgsMapLayerProxyModel.PolygonLayer)
+        self.mcbLayer.setFilters(QgsMapLayerProxyModel.VectorLayer)
         self.txt.clear()
 
     def on_mcbLayer_layerChanged(self):
@@ -95,18 +93,20 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
                     'METHOD': 0}
                 )['OUTPUT'].selectedFeatures()
 
-                powiatyTxt = "Powiaty: "
+                powiatySummary = []
 
                 if powiatySelected:
                     for feature in powiatySelected:
                         self.powiatyTerytByLayer.append(feature["teryt"])
-                        powiatyTxt += f'{feature["teryt"]} {feature["nazwa"]}, '
+                        powiatySummary.append(f'{feature["teryt"]} {feature["nazwa"]}')
 
                     self.txt.append(f'Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}')
-                    self.txt.append(powiatyTxt)
+                    powiatySummary.sort(key=lambda x: x.split()[0])
+                    self.txt.append('Powiaty: ' + ', '.join(powiatySummary))
                 else:
                     self.txt.append(f'Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}')
                     QMessageBox.warning(self, "Uwaga", "Wybrana warstwa nie znajduje się na terenie żadnego powiatu.")
+
         except Exception as e:
             QApplication.restoreOverrideCursor()
             QgsMessageLog.logMessage(
@@ -114,10 +114,11 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
                 'BDOT10k',
                 Qgis.MessageLevel.Critical
             )
+
         finally:
             QApplication.restoreOverrideCursor()
 
-        return self.powiatyTerytByLayer
+        return self.powiatyTerytByLayer.sort()
 
     @pyqtSlot()
     def on_btnDwnl_clicked(self):
@@ -132,9 +133,6 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
 
                 self.btnDwnl.setEnabled(False)
 
-                QgsMessageLog.logMessage(f'Lokalizacja pobierania: {downloadPath}', 'BDOT10k', level=Qgis.MessageLevel.Info)
-                QgsMessageLog.logMessage('Pobieranie paczek dla powiatów: ' + str(sorted(self.powiatyTerytByLayer)), 'BDOT10k', level=Qgis.MessageLevel.Info)
-
                 task = DownloadBdotTask(
                     description="Pobieranie paczek BDOT10k",
                     downloadPath=downloadPath,
@@ -144,7 +142,6 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
                     iface=iface
                 )
 
-                self.taskManager.addTask(task)
                 self.taskManager.addTask(task)
                 self.taskId = self.taskManager.taskId(task)
                 self.taskManager.statusChanged.connect(self.enable_btn_dwnl)
