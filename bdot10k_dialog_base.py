@@ -28,7 +28,6 @@ from qgis.PyQt.QtCore import pyqtSlot
 from qgis.PyQt.QtWidgets import QCheckBox, QDialog, QMessageBox
 
 from qgis.core import QgsApplication
-from qgis.utils import iface
 
 from .dialog_mixin import *
 from .task_dwnl_bdot import DownloadBdotTask
@@ -90,8 +89,7 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
                 downloadPath=downloadPath,
                 oldSchema=oldSchema,
                 bdot10kDataFormat=bdot10kDataFormat,
-                powiatyTerytList=checkBoxList,
-                iface=iface
+                powiatyTerytList=checkBoxList
             )
 
             self.taskManager.addTask(task)

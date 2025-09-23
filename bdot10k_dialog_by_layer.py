@@ -32,7 +32,6 @@ from qgis import processing
 from qgis.core import (Qgis, QgsMessageLog, QgsApplication,
                        QgsMapLayerProxyModel, QgsVectorLayer,
                        QgsCoordinateReferenceSystem)
-from qgis.utils import iface
 
 from .dialog_mixin import *
 from .task_dwnl_bdot import DownloadBdotTask
@@ -138,8 +137,7 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
                     downloadPath=downloadPath,
                     oldSchema=oldSchema,
                     bdot10kDataFormat=bdot10kDataFormat,
-                    powiatyTerytList=self.powiatyTerytByLayer,
-                    iface=iface
+                    powiatyTerytList=self.powiatyTerytByLayer
                 )
 
                 self.taskManager.addTask(task)

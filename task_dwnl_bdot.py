@@ -3,6 +3,7 @@ import os, requests
 from qgis.core import (Qgis, QgsApplication, QgsMessageLog,
                        QgsNetworkAccessManager, QgsTask)
 from qgis.gui import QgisInterface
+from qgis.utils import iface
 
 from qgis.PyQt.QtCore import QUrl
 from qgis.PyQt.QtNetwork import QNetworkReply, QNetworkRequest
@@ -14,12 +15,11 @@ class DownloadBdotTask(QgsTask):
     """Subclass task for dwonloading BDOT10k."""
 
     def __init__(self, description: str, downloadPath: str, oldSchema: bool,
-                bdot10kDataFormat: str, powiatyTerytList: list, iface: QgisInterface):
+                bdot10kDataFormat: str, powiatyTerytList: list):
         """Constructor."""
 
         super().__init__(description, QgsTask.CanCancel)
         self.exception = None
-        self.iface = iface
         self.downloadPath = downloadPath
         self.oldSchema = oldSchema
         self.bdot10kDataFormat = bdot10kDataFormat
@@ -91,7 +91,7 @@ class DownloadBdotTask(QgsTask):
                 Qgis.Success
             )
 
-            self.iface.messageBar().pushMessage(
+            iface.messageBar().pushMessage(
                 "Sukces", "Pobrano paczki BOT10k.",
                 level=Qgis.Success,
                 duration=10
@@ -112,7 +112,7 @@ class DownloadBdotTask(QgsTask):
                 )
                 raise self.exception
 
-            self.iface.messageBar().pushMessage(
+            iface.messageBar().pushMessage(
                 "Błąd", "Nie udało się pobrać paczek BDOT10k.",
                 level=Qgis.Critical,
                 duration=10
@@ -127,7 +127,7 @@ class DownloadBdotTask(QgsTask):
             Qgis.Info
         )
 
-        self.iface.messageBar().pushMessage(
+        iface.messageBar().pushMessage(
             "Stop", "Anulowano pobieranie paczek BDOT10k.",
             level=Qgis.Info
         )
