@@ -12,12 +12,11 @@
  ***************************************************************************/
 """
 
+import os
+
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction
 
-# Initialize Qt resources from file resources.py
-from .resources import *
-# Import the code for the dialogs
 from .bdot10k_dialog_base import BDOT10kDialogBase
 from .bdot10k_dialog_by_layer import BDOT10kDialogByLayer
 from .bdot10k_dialog_info import BDOT10kDialogInfo
@@ -42,6 +41,7 @@ class BDOT10k:
         self.dlg_by_layer = None
         self.dlg_info = None
         self.menu = "BDOT10k"
+        self.plugin_dir = os.path.dirname(__file__)
 
     def add_action(
         self,
@@ -82,14 +82,14 @@ class BDOT10k:
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ":/plugins/bdot10k/icon.png"
+        icon_path = os.path.join(self.plugin_dir, "icon.png")
         self.add_action(
             icon_path,
             text="Pobierz paczki .zip BDOT10k",
             callback=self.run,
             parent=self.iface.mainWindow())
 
-        icon_path = ":/plugins/bdot10k/icon2.png"
+        icon_path = os.path.join(self.plugin_dir, "icon2.png")
         self.add_action(
             icon_path,
             text="Pobierz BDOT10k według warstwy",
