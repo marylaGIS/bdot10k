@@ -29,7 +29,7 @@ from qgis.PyQt.QtWidgets import QCheckBox, QDialog, QMessageBox
 
 from qgis.core import QgsApplication
 
-from .dialog_mixin import *
+from .dialog_mixin import DialogMixin
 from .task_dwnl_bdot import DownloadBdotTask
 from .utils import *
 
@@ -39,6 +39,8 @@ FORM_CLASS, _ = uic.loadUiType(os.path.join(
 
 
 class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
+    """Dialog for downloading BDOT10k data by selecting counties via checkboxes."""
+
     def __init__(self, parent=None):
         """Constructor."""
         super().__init__(parent)
@@ -49,28 +51,39 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
 
+        self.task = None
+        self.taskId = None
         self.taskManager = QgsApplication.taskManager()
 
     def change_check_status(self, status: bool):
+        """Changes the check status of all checkboxes in the current tab.
+
+        :param status: Defines whether the checkboxes should be checked or unchecked.
+        """
         currentTab = self.tabWidget.currentWidget()
         for qcb in currentTab.findChildren(QCheckBox):
             qcb.setChecked(status)
 
     @pyqtSlot()
     def on_btnCheckWoj_clicked(self):
+        """Checks all checkboxes in the current tab."""
         self.change_check_status(True)
 
     @pyqtSlot()
     def on_btnClearWoj_clicked(self):
+        """Unchecks all checkboxes in the current tab."""
         self.change_check_status(False)
 
     @pyqtSlot()
     def on_btnClearAll_clicked(self):
+        """Unchecks all checkboxes in all tabs."""
         for qcb in self.findChildren(QCheckBox):
             qcb.setChecked(False)
 
     @pyqtSlot()
     def on_btnDwnl_clicked(self):
+        """Checks parameters required for downloading data
+        and creates a task."""
         downloadPath = self.dwnlPath.filePath()
 
         oldSchema, bdot10kDataFormat = self.get_bdot10k_data_options()
@@ -85,7 +98,7 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
 
             self.btnDwnl.setEnabled(False)
 
-            task = DownloadBdotTask(
+            self.task = DownloadBdotTask(
                 description="Pobieranie paczek BDOT10k",
                 downloadPath=downloadPath,
                 oldSchema=oldSchema,
@@ -93,8 +106,8 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
                 powiatyTerytList=checkBoxList
             )
 
-            self.taskManager.addTask(task)
-            self.taskId = self.taskManager.taskId(task)
+            self.taskManager.addTask(self.task)
+            self.taskId = self.taskManager.taskId(self.task)
             self.taskManager.statusChanged.connect(self.enable_btn_dwnl)
 
         elif not checkBoxList:

@@ -30,10 +30,9 @@ from qgis.PyQt.QtWidgets import QApplication, QDialog, QMessageBox
 
 from qgis import processing
 from qgis.core import (Qgis, QgsMessageLog, QgsApplication,
-                       QgsMapLayerProxyModel, QgsVectorLayer,
-                       QgsCoordinateReferenceSystem)
+                       QgsMapLayerProxyModel, QgsVectorLayer)
 
-from .dialog_mixin import *
+from .dialog_mixin import DialogMixin
 from .task_dwnl_bdot import DownloadBdotTask
 from .utils import *
 
@@ -43,6 +42,9 @@ FORM_CLASS, _ = uic.loadUiType(os.path.join(
 
 
 class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
+    """Dialog for downloading BDOT10k data by selecting counties
+    based on their intersection with the selected layer."""
+
     def __init__(self, parent=None):
         """Constructor."""
         super().__init__(parent)
@@ -62,6 +64,8 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
         self.txt.clear()
 
     def on_mcbLayer_layerChanged(self):
+        """Selects counties for data download based on their intersection
+        with the layer selected in the combo box."""
         self.txt.clear()
         self.powiatyTerytByLayer.clear()
 
@@ -75,13 +79,13 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
 
             if selectionLayer.featureCount() == 0:
                 QApplication.restoreOverrideCursor()
-                self.txt.append(f'Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}')
+                self.txt.append(f"Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}")
                 QMessageBox.warning(self, "Uwaga", "Wybrana warstwa nie zawiera obiektów.")
             else:
                 powiatyLayer = QgsVectorLayer(
-                    os.path.join(self.plugin_dir, 'powiaty.geojson'),
-                    'powiaty',
-                    'ogr'
+                    os.path.join(self.plugin_dir, "powiaty.geojson"),
+                    "powiaty",
+                    "ogr"
                 )
 
                 powiatySelected = processing.run(
@@ -99,18 +103,18 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
                         self.powiatyTerytByLayer.append(feature["teryt"])
                         powiatySummary.append(f'{feature["teryt"]} {feature["nazwa"]}')
 
-                    self.txt.append(f'Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}')
+                    self.txt.append(f"Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}")
                     powiatySummary.sort(key=lambda x: x.split()[0])
-                    self.txt.append('Powiaty: ' + ', '.join(powiatySummary))
+                    self.txt.append("Powiaty: " + ", ".join(powiatySummary))
                 else:
-                    self.txt.append(f'Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}')
+                    self.txt.append(f"Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}")
                     QMessageBox.warning(self, "Uwaga", "Wybrana warstwa nie znajduje się na terenie żadnego powiatu.")
 
         except Exception as e:
             QApplication.restoreOverrideCursor()
             QgsMessageLog.logMessage(
-                f'Wystąpił błąd podczas selekcji powiatów. Treść błędu: {e}',
-                'BDOT10k',
+                f"Wystąpił błąd podczas selekcji powiatów. Treść błędu: {e}",
+                "BDOT10k",
                 Qgis.MessageLevel.Critical
             )
 
@@ -121,6 +125,8 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
 
     @pyqtSlot()
     def on_btnDwnl_clicked(self):
+        """Checks parameters required for downloading data
+        and creates a task."""
         if not self.powiatyTerytByLayer:
             QMessageBox.critical(self, "Błąd", "Brak powiatów do pobrania.")
         else:

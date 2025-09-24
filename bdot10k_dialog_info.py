@@ -32,6 +32,8 @@ FORM_CLASS, _ = uic.loadUiType(os.path.join(
 
 
 class BDOT10kDialogInfo(QDialog, FORM_CLASS):
+    """Dialog with general information about the plugin."""
+
     def __init__(self, parent=None):
         """Constructor."""
         super(BDOT10kDialogInfo, self).__init__(parent)
