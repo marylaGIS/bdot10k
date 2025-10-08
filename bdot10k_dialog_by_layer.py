@@ -59,6 +59,8 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
         self.powiatyTerytByLayer = []
         self.taskManager = QgsApplication.taskManager()
 
+        self.btnDwnl.setEnabled(False)
+        self.btnDwnl.setToolTip('Najpierw wybierz warstwę wektorową.')
         # set filters for the map layer combo box - only vector layers
         self.mcbLayer.setFilters(QgsMapLayerProxyModel.VectorLayer)
         self.txt.clear()
@@ -80,7 +82,8 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
             if selectionLayer.featureCount() == 0:
                 QApplication.restoreOverrideCursor()
                 self.txt.append(f"Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}")
-                QMessageBox.warning(self, "Uwaga", "Wybrana warstwa nie zawiera obiektów.")
+                if self.isVisible():
+                    QMessageBox.warning(self, "Uwaga", "Wybrana warstwa nie zawiera obiektów.")
             else:
                 powiatyLayer = QgsVectorLayer(
                     os.path.join(self.plugin_dir, "powiaty.geojson"),
@@ -108,7 +111,11 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
                     self.txt.append("Powiaty: " + ", ".join(powiatySummary))
                 else:
                     self.txt.append(f"Liczba powiatów do pobrania: {len(self.powiatyTerytByLayer)}")
-                    QMessageBox.warning(self, "Uwaga", "Wybrana warstwa nie znajduje się na terenie żadnego powiatu.")
+                    if self.isVisible():
+                        QMessageBox.warning(self, "Uwaga", "Wybrana warstwa nie znajduje się na terenie żadnego powiatu.")
+
+                self.btnDwnl.setEnabled(True)
+                self.btnDwnl.setToolTip('')
 
         except Exception as e:
             QApplication.restoreOverrideCursor()
