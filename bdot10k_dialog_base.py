@@ -52,7 +52,7 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
         self.setupUi(self)
 
         self.task = None
-        self.taskId = None
+        self.taskIdDwnl = None
         self.taskManager = QgsApplication.taskManager()
 
     def change_check_status(self, status: bool):
@@ -107,7 +107,7 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
             )
 
             self.taskManager.addTask(self.task)
-            self.taskId = self.taskManager.taskId(self.task)
+            self.taskIdDwnl = self.taskManager.taskId(self.task)
             self.taskManager.statusChanged.connect(self.enable_btn_dwnl)
 
         elif not checkBoxList:
