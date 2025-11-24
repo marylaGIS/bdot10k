@@ -47,7 +47,7 @@ class DialogMixin:
         :param status: The status reported by the task.
         """
 
-        if taskId == self.taskId and status in (
+        if taskId == self.taskIdDwnl and status in (
             QgsTask.Complete,
             QgsTask.Terminated,
             QgsTask.CancelWithoutPrompt,
