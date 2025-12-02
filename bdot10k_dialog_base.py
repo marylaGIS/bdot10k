@@ -51,9 +51,11 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
 
-        self.task = None
+        self.taskDwnl = None
         self.taskIdDwnl = None
         self.taskManager = QgsApplication.taskManager()
+
+        self.btnCancelDwnl.hide()
 
     def change_check_status(self, status: bool):
         """Changes the check status of all checkboxes in the current tab.
@@ -96,9 +98,11 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
 
         if check_dwnl_path(downloadPath) and checkBoxList:
 
-            self.btnDwnl.setEnabled(False)
+            self.btnDwnl.hide()
+            self.btnCancelDwnl.show()
+            self.btnCancelDwnl.setEnabled(True)
 
-            self.task = DownloadBdotTask(
+            self.taskDwnl = DownloadBdotTask(
                 description="Pobieranie paczek BDOT10k",
                 downloadPath=downloadPath,
                 oldSchema=oldSchema,
@@ -106,9 +110,9 @@ class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
                 powiatyTerytList=checkBoxList
             )
 
-            self.taskManager.addTask(self.task)
-            self.taskIdDwnl = self.taskManager.taskId(self.task)
-            self.taskManager.statusChanged.connect(self.enable_btn_dwnl)
+            self.taskManager.addTask(self.taskDwnl)
+            self.taskIdDwnl = self.taskManager.taskId(self.taskDwnl)
+            self.taskManager.statusChanged.connect(self.switch_buttons)
 
         elif not checkBoxList:
 

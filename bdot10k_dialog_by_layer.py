@@ -57,10 +57,12 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
         self.setupUi(self)
 
         self.powiatyTerytByLayer = []
+        self.taskDwnl = None
         self.taskIdDwnl = None
         self.taskIdSelect = None
         self.taskManager = QgsApplication.taskManager()
 
+        self.btnCancelDwnl.hide()
         self.btnDwnl.setEnabled(False)
         self.btnDwnl.setToolTip('Najpierw wybierz warstwę wektorową.')
         # set filters for the map layer combo box - only vector layers
@@ -166,9 +168,11 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
 
             if check_dwnl_path(downloadPath):
 
-                self.btnDwnl.setEnabled(False)
+                self.btnDwnl.hide()
+                self.btnCancelDwnl.show()
+                self.btnCancelDwnl.setEnabled(True)
 
-                task = DownloadBdotTask(
+                self.taskDwnl = DownloadBdotTask(
                     description="Pobieranie paczek BDOT10k",
                     downloadPath=downloadPath,
                     oldSchema=oldSchema,
@@ -176,6 +180,6 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
                     powiatyTerytList=self.powiatyTerytByLayer
                 )
 
-                self.taskManager.addTask(task)
-                self.taskIdDwnl = self.taskManager.taskId(task)
-                self.taskManager.statusChanged.connect(self.enable_btn_dwnl)
+                self.taskManager.addTask(self.taskDwnl)
+                self.taskIdDwnl = self.taskManager.taskId(self.taskDwnl)
+                self.taskManager.statusChanged.connect(self.switch_buttons)

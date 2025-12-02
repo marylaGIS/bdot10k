@@ -263,6 +263,13 @@
       </spacer>
      </item>
      <item>
+      <widget class="QPushButton" name="btnCancelDwnl">
+       <property name="text">
+        <string>Anuluj pobieranie</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="btnDwnl">
        <property name="text">
         <string>Pobierz</string>

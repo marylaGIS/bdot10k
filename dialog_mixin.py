@@ -1,3 +1,5 @@
+from qgis.PyQt.QtCore import pyqtSlot
+
 from qgis.core import QgsTask
 
 
@@ -39,9 +41,9 @@ class DialogMixin:
 
         return oldSchema, bdot10kDataFormat
 
-    def enable_btn_dwnl(self, taskId: int, status: int):
-        """Enables the download button after the current
-        download task is completed.
+    def switch_buttons(self, taskId: int, status: int):
+        """Switches visibility of the download and cancel buttons
+        after the current download task status has changed.
 
         :param taskId: The ID of the BDOT10k data download task.
         :param status: The status reported by the task.
@@ -52,4 +54,11 @@ class DialogMixin:
             QgsTask.Terminated,
             QgsTask.CancelWithoutPrompt,
         ):
-            self.btnDwnl.setEnabled(True)
+            self.btnCancelDwnl.hide()
+            self.btnDwnl.show()
+
+    @pyqtSlot()
+    def on_btnCancelDwnl_clicked(self):
+        self.taskDwnl.cancel()
+        self.btnCancelDwnl.setEnabled(False)
+        self.btnCancelDwnl.setToolTip('Pobieranie jest w trakcie anulowania')
