@@ -24,11 +24,10 @@
 import os
 
 from qgis.PyQt import uic
-from qgis.PyQt.QtCore import pyqtSlot, Qt
+from qgis.PyQt.QtCore import Qt, pyqtSlot
 from qgis.PyQt.QtGui import QCursor
 from qgis.PyQt.QtWidgets import QApplication, QDialog, QMessageBox
 
-from qgis import processing
 from qgis.core import (Qgis, QgsMessageLog, QgsApplication,
                        QgsMapLayerProxyModel, QgsTask)
 
@@ -64,7 +63,7 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
 
         self.btnCancelDwnl.hide()
         self.btnDwnl.setEnabled(False)
-        self.btnDwnl.setToolTip('Najpierw wybierz warstwę wektorową.')
+        self.btnDwnl.setToolTip("Najpierw wybierz warstwę wektorową.")
         # set filters for the map layer combo box - only vector layers
         self.mcbLayer.setFilters(QgsMapLayerProxyModel.VectorLayer)
         self.txt.clear()
@@ -130,7 +129,7 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
 
     def handle_selection_result(self, selectionList: list) -> list:
         """Prepare a list of county TERYT codes to download BDOT10k data.
-        
+
         :param selectionList: List of county names and TERYT codes
             selected by the SelectTask.
         :returns: List of TERYT codes ready for download.
@@ -150,7 +149,11 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
         else:
             self.txt.append(f"Liczba powiatów do pobrania: {len(selectionList)}")
             if self.isVisible():
-                QMessageBox.warning(self, "Uwaga", "Wybrana warstwa nie znajduje się na terenie żadnego powiatu.")
+                QMessageBox.warning(
+                    self,
+                    "Uwaga",
+                    "Wybrana warstwa nie znajduje się na terenie żadnego powiatu."
+                )
 
         return self.powiatyTerytByLayer
 

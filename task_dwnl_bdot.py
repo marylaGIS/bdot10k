@@ -1,8 +1,6 @@
-import os, requests
+import os
 
-from qgis.core import (Qgis, QgsApplication, QgsMessageLog,
-                       QgsNetworkAccessManager, QgsTask)
-from qgis.gui import QgisInterface
+from qgis.core import Qgis, QgsMessageLog, QgsNetworkAccessManager, QgsTask
 from qgis.utils import iface
 
 from qgis.PyQt.QtCore import QUrl
@@ -15,7 +13,7 @@ class DownloadBdotTask(QgsTask):
     """Subclass task for dwonloading BDOT10k."""
 
     def __init__(self, description: str, downloadPath: str, oldSchema: bool,
-                bdot10kDataFormat: str, powiatyTerytList: list):
+                 bdot10kDataFormat: str, powiatyTerytList: list):
         """Constructor."""
 
         super().__init__(description, QgsTask.CanCancel)
@@ -37,39 +35,39 @@ class DownloadBdotTask(QgsTask):
         )
 
         QgsMessageLog.logMessage(
-            "Rozpoczęto pobieranie paczek BDOT10k powiatów o numerach TERYT:" \
+            "Rozpoczęto pobieranie paczek BDOT10k powiatów o numerach TERYT: "
             f"{self.powiatyTerytList}",
             MESSAGE_CATEGORY,
             Qgis.Info
         )
 
         if self.oldSchema:
-            if self.bdot10kDataFormat == 'SHP':
-                url = 'https://opendata.geoportal.gov.pl/bdot10k/SHP/{}/{}_SHP.zip'
-                bdot_zip = 'bdot10k_SHP_{}.zip'
-            elif self.bdot10kDataFormat == 'GML':
-                url = 'https://opendata.geoportal.gov.pl/bdot10k/{}/{}_GML.zip'
-                bdot_zip = 'bdot10k_GML_{}.zip'
+            if self.bdot10kDataFormat == "SHP":
+                url = "https://opendata.geoportal.gov.pl/bdot10k/SHP/{}/{}_SHP.zip"
+                bdot_zip = "bdot10k_SHP_{}.zip"
+            elif self.bdot10kDataFormat == "GML":
+                url = "https://opendata.geoportal.gov.pl/bdot10k/{}/{}_GML.zip"
+                bdot_zip = "bdot10k_GML_{}.zip"
         else:
-            if self.bdot10kDataFormat == 'GML':
-                url = 'https://opendata.geoportal.gov.pl/bdot10k/schemat2021/{}/{}_GML.zip'
-                bdot_zip = 'bdot10k_{}.zip'
-            elif self.bdot10kDataFormat == 'GPKG':
-                url = 'https://opendata.geoportal.gov.pl/bdot10k/schemat2021/GPKG/{}/{}_GPKG.zip'
-                bdot_zip = 'bdot10k_GPKG_{}.zip'
+            if self.bdot10kDataFormat == "GML":
+                url = "https://opendata.geoportal.gov.pl/bdot10k/schemat2021/{}/{}_GML.zip"
+                bdot_zip = "bdot10k_{}.zip"
+            elif self.bdot10kDataFormat == "GPKG":
+                url = "https://opendata.geoportal.gov.pl/bdot10k/schemat2021/GPKG/{}/{}_GPKG.zip"
+                bdot_zip = "bdot10k_GPKG_{}.zip"
 
         for teryt in self.powiatyTerytList:
             request = QNetworkRequest(QUrl(url.format(teryt[:2], teryt)))
             reply = self.networkManager.blockingGet(request)
-            
+
             if reply.error() == QNetworkReply.NoError:
                 content = reply.content()
                 bdot_zip_path = os.path.join(self.downloadPath, bdot_zip.format(teryt))
-                with open(bdot_zip_path, 'wb') as bdot_dwnl_file:
+                with open(bdot_zip_path, "wb") as bdot_dwnl_file:
                     bdot_dwnl_file.write(content)
             else:
                 QgsMessageLog.logMessage(
-                    "Połączenie z serwerem nie powiodło się." \
+                    "Połączenie z serwerem nie powiodło się. "
                     f"Treść błędu: {reply.errorString()}",
                     MESSAGE_CATEGORY,
                     Qgis.Critical
@@ -105,7 +103,7 @@ class DownloadBdotTask(QgsTask):
                 )
             else:
                 QgsMessageLog.logMessage(
-                    "Nie udało się pobrać paczek BDOT10k.\n" \
+                    "Nie udało się pobrać paczek BDOT10k.\n"
                     f"Treść błędu: {self.exception}",
                     MESSAGE_CATEGORY,
                     Qgis.Critical

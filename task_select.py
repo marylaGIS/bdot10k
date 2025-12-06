@@ -60,6 +60,12 @@ class SelectTask(QgsTask):
                 return False
 
         except Exception as e:
+            QgsMessageLog.logMessage(
+                "Nie udało się wyselekcjonować powiatów.\n"
+                f"Treść błędu: {e}",
+                MESSAGE_CATEGORY,
+                Qgis.Critical
+            )
             return False
 
         return True
@@ -85,7 +91,7 @@ class SelectTask(QgsTask):
                 )
             else:
                 QgsMessageLog.logMessage(
-                    "Nie udało się wyselekcjonować powiatów.\n" \
+                    "Nie udało się wyselekcjonować powiatów.\n"
                     f"Treść błędu: {self.exception}",
                     MESSAGE_CATEGORY,
                     Qgis.Critical
