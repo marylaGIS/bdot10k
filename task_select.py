@@ -21,7 +21,7 @@ class SelectTask(QgsTask):
                  selectionLayer: QgsVectorLayer):
         """Constructor."""
 
-        super().__init__(description, QgsTask.CanCancel)
+        super().__init__(description, QgsTask.Flag.CanCancel)
         self.exception = None
         self.plugin_dir = os.path.dirname(__file__)
         self.selectionLayer = selectionLayer
@@ -77,7 +77,7 @@ class SelectTask(QgsTask):
             QgsMessageLog.logMessage(
                 "Wyselekcjonowano powiaty.",
                 MESSAGE_CATEGORY,
-                Qgis.Success
+                Qgis.MessageLevel.Success
             )
 
             self.result.emit(self.powiatySelectedList)
@@ -87,20 +87,20 @@ class SelectTask(QgsTask):
                 QgsMessageLog.logMessage(
                     "Nie udało się wyselekcjonować powiatów.",
                     MESSAGE_CATEGORY,
-                    Qgis.Warning
+                    Qgis.MessageLevel.Warning
                 )
             else:
                 QgsMessageLog.logMessage(
                     "Nie udało się wyselekcjonować powiatów.\n"
                     f"Treść błędu: {self.exception}",
                     MESSAGE_CATEGORY,
-                    Qgis.Critical
+                    Qgis.MessageLevel.Critical
                 )
                 raise self.exception
 
             iface.messageBar().pushMessage(
                 "Błąd", "Nie udało się wyselekcjonować powiatów.",
-                level=Qgis.Critical,
+                level=Qgis.MessageLevel.Critical,
                 duration=10
             )
 
@@ -110,12 +110,12 @@ class SelectTask(QgsTask):
         QgsMessageLog.logMessage(
             "Anulowano wyszukiwanie powiatów.",
             MESSAGE_CATEGORY,
-            Qgis.Info
+            Qgis.MessageLevel.Info
         )
 
         iface.messageBar().pushMessage(
             "Stop", "Anulowano wyszukiwanie powiatów.",
-            level=Qgis.Info
+            level=Qgis.MessageLevel.Info
         )
 
         super().cancel()

@@ -29,15 +29,15 @@ class DialogMixin:
         if self.gbOldSchema.isChecked():
             oldSchema = True
             if self.rbtnSHPold.isChecked():
-                bdot10kDataFormat = 'SHP'
+                bdot10kDataFormat = "SHP"
             elif self.rbtnGMLold.isChecked():
-                bdot10kDataFormat = 'GML'
+                bdot10kDataFormat = "GML"
         else:
             oldSchema = False
             if self.rbtnGML.isChecked():
-                bdot10kDataFormat = 'GML'
+                bdot10kDataFormat = "GML"
             elif self.rbtnGPKG.isChecked():
-                bdot10kDataFormat = 'GPKG'
+                bdot10kDataFormat = "GPKG"
 
         return oldSchema, bdot10kDataFormat
 
@@ -50,15 +50,18 @@ class DialogMixin:
         """
 
         if taskId == self.taskIdDwnl and status in (
-            QgsTask.Complete,
-            QgsTask.Terminated,
-            QgsTask.CancelWithoutPrompt,
+            QgsTask.TaskStatus.Complete,
+            QgsTask.TaskStatus.Terminated,
+            QgsTask.Flag.CancelWithoutPrompt,
         ):
             self.btnCancelDwnl.hide()
             self.btnDwnl.show()
 
     @pyqtSlot()
     def on_btnCancelDwnl_clicked(self):
+        """Cancels the ongoing data download task
+        and updates the cancel button state."""
+
         self.taskDwnl.cancel()
         self.btnCancelDwnl.setEnabled(False)
-        self.btnCancelDwnl.setToolTip('Pobieranie jest w trakcie anulowania')
+        self.btnCancelDwnl.setToolTip("Pobieranie jest w trakcie anulowania")

@@ -65,7 +65,7 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
         self.btnDwnl.setEnabled(False)
         self.btnDwnl.setToolTip("Najpierw wybierz warstwę wektorową.")
         # set filters for the map layer combo box - only vector layers
-        self.mcbLayer.setFilters(QgsMapLayerProxyModel.VectorLayer)
+        self.mcbLayer.setFilters(QgsMapLayerProxyModel.Filter.VectorLayer)
         self.txt.clear()
 
     def on_mcbLayer_layerChanged(self):
@@ -80,7 +80,7 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
             selectionLayer = self.mcbLayer.currentLayer()
 
         try:
-            QApplication.setOverrideCursor(QCursor(Qt.BusyCursor))
+            QApplication.setOverrideCursor(QCursor(Qt.CursorShape.BusyCursor))
 
             if selectionLayer.featureCount() == 0:
                 QApplication.restoreOverrideCursor()
@@ -121,8 +121,8 @@ class BDOT10kDialogByLayer(QDialog, FORM_CLASS, DialogMixin):
         """
 
         if taskId == self.taskIdSelect and status in (
-            QgsTask.CancelWithoutPrompt,
-            QgsTask.Terminated,
+            QgsTask.Flag.CancelWithoutPrompt,
+            QgsTask.TaskStatus.Terminated,
         ):
             QApplication.restoreOverrideCursor()
             self.txt.clear()

@@ -16,7 +16,7 @@ class DownloadBdotTask(QgsTask):
                  bdot10kDataFormat: str, powiatyTerytList: list):
         """Constructor."""
 
-        super().__init__(description, QgsTask.CanCancel)
+        super().__init__(description, QgsTask.Flag.CanCancel)
         self.exception = None
         self.downloadPath = downloadPath
         self.oldSchema = oldSchema
@@ -31,14 +31,14 @@ class DownloadBdotTask(QgsTask):
         QgsMessageLog.logMessage(
             f"Lokalizacja pobierania: {self.downloadPath}",
             MESSAGE_CATEGORY,
-            Qgis.Info
+            Qgis.MessageLevel.Info
         )
 
         QgsMessageLog.logMessage(
             "Rozpoczęto pobieranie paczek BDOT10k powiatów o numerach TERYT: "
             f"{self.powiatyTerytList}",
             MESSAGE_CATEGORY,
-            Qgis.Info
+            Qgis.MessageLevel.Info
         )
 
         if self.oldSchema:
@@ -60,7 +60,7 @@ class DownloadBdotTask(QgsTask):
             request = QNetworkRequest(QUrl(url.format(teryt[:2], teryt)))
             reply = self.networkManager.blockingGet(request)
 
-            if reply.error() == QNetworkReply.NoError:
+            if reply.error() == QNetworkReply.NetworkError.NoError:
                 content = reply.content()
                 bdot_zip_path = os.path.join(self.downloadPath, bdot_zip.format(teryt))
                 with open(bdot_zip_path, "wb") as bdot_dwnl_file:
@@ -70,7 +70,7 @@ class DownloadBdotTask(QgsTask):
                     "Połączenie z serwerem nie powiodło się. "
                     f"Treść błędu: {reply.errorString()}",
                     MESSAGE_CATEGORY,
-                    Qgis.Critical
+                    Qgis.MessageLevel.Critical
                 )
                 return False
 
@@ -86,12 +86,12 @@ class DownloadBdotTask(QgsTask):
             QgsMessageLog.logMessage(
                 "Pobrano paczki BDOT10k.",
                 MESSAGE_CATEGORY,
-                Qgis.Success
+                Qgis.MessageLevel.Success
             )
 
             iface.messageBar().pushMessage(
                 "Sukces", "Pobrano paczki BOT10k.",
-                level=Qgis.Success,
+                level=Qgis.MessageLevel.Success,
                 duration=10
             )
         else:
@@ -99,20 +99,20 @@ class DownloadBdotTask(QgsTask):
                 QgsMessageLog.logMessage(
                     "Nie udało się pobrać paczek BDOT10k.",
                     MESSAGE_CATEGORY,
-                    Qgis.Warning
+                    Qgis.MessageLevel.Warning
                 )
             else:
                 QgsMessageLog.logMessage(
                     "Nie udało się pobrać paczek BDOT10k.\n"
                     f"Treść błędu: {self.exception}",
                     MESSAGE_CATEGORY,
-                    Qgis.Critical
+                    Qgis.MessageLevel.Critical
                 )
                 raise self.exception
 
             iface.messageBar().pushMessage(
                 "Błąd", "Nie udało się pobrać paczek BDOT10k.",
-                level=Qgis.Critical,
+                level=Qgis.MessageLevel.Critical,
                 duration=10
             )
 
@@ -122,12 +122,12 @@ class DownloadBdotTask(QgsTask):
         QgsMessageLog.logMessage(
             "Anulowano pobieranie paczek BDOT10k.",
             MESSAGE_CATEGORY,
-            Qgis.Info
+            Qgis.MessageLevel.Info
         )
 
         iface.messageBar().pushMessage(
             "Stop", "Anulowano pobieranie paczek BDOT10k.",
-            level=Qgis.Info
+            level=Qgis.MessageLevel.Info
         )
 
         super().cancel()
