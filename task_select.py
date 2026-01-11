@@ -1,4 +1,5 @@
-# https://gis.stackexchange.com/a/430368/173206
+"""QGIS Task for layer intersection processing in the background.
+https://gis.stackexchange.com/a/430368/173206"""
 
 import os
 
@@ -34,7 +35,7 @@ class SelectTask(QgsTask):
 
         try:
             powiatyLayer = QgsVectorLayer(
-                os.path.join(self.plugin_dir, "powiaty.geojson"),
+                os.path.join(self.plugin_dir, "powiaty.gpkg"),
                 "powiaty",
                 "ogr"
             )

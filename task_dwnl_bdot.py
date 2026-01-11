@@ -1,3 +1,5 @@
+"""QGIS Task for downloading data in the background."""
+
 import os
 
 from qgis.core import Qgis, QgsMessageLog, QgsNetworkAccessManager, QgsTask

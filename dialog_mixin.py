@@ -1,3 +1,5 @@
+"""Shared mixin utilities for dialog components."""
+
 from qgis.PyQt.QtCore import pyqtSlot
 
 from qgis.core import QgsTask
