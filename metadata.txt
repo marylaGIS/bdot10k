@@ -1,7 +1,7 @@
 [general]
 name=BDOT10k
 qgisMinimumVersion=3.0
-supportsQt6=True
+qgisMaximumVersion=4.99
 description=Wtyczka do pobierania danych BDOT10k. Plugin for downloading BDOT10k data.
 version=2.0.0
 author=Maryla Jeż
@@ -47,3 +47,4 @@ icon=icon.png
 experimental=False
 deprecated=False
 server=False
+supportsQt6=True
