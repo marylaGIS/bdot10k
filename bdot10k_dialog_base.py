@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 /***************************************************************************
  BDOT10k_pluginDialog
@@ -25,20 +24,96 @@
 import os
 
 from qgis.PyQt import uic
-from qgis.PyQt import QtWidgets
+from qgis.PyQt.QtCore import pyqtSlot
+from qgis.PyQt.QtWidgets import QCheckBox, QDialog, QMessageBox
+
+from qgis.core import QgsApplication
+
+from .dialog_mixin import DialogMixin
+from .task_dwnl_bdot import DownloadBdotTask
+from .utils import *
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'bdot10k_dialog_base.ui'))
 
 
-class BDOT10kDialogBase(QtWidgets.QDialog, FORM_CLASS):
+class BDOT10kDialogBase(QDialog, FORM_CLASS, DialogMixin):
+    """Dialog for downloading BDOT10k data by selecting counties via checkboxes."""
+
     def __init__(self, parent=None):
         """Constructor."""
-        super(BDOT10kDialogBase, self).__init__(parent)
+        super().__init__(parent)
         # Set up the user interface from Designer through FORM_CLASS.
         # After self.setupUi() you can access any designer object by doing
         # self.<objectname>, and you can use autoconnect slots - see
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
+
+        self.taskDwnl = None
+        self.taskIdDwnl = None
+        self.taskManager = QgsApplication.taskManager()
+
+        self.btnCancelDwnl.hide()
+
+    def change_check_status(self, status: bool):
+        """Changes the check status of all checkboxes in the current tab.
+
+        :param status: Defines whether the checkboxes should be checked or unchecked.
+        """
+        currentTab = self.tabWidget.currentWidget()
+        for qcb in currentTab.findChildren(QCheckBox):
+            qcb.setChecked(status)
+
+    @pyqtSlot()
+    def on_btnCheckWoj_clicked(self):
+        """Checks all checkboxes in the current tab."""
+        self.change_check_status(True)
+
+    @pyqtSlot()
+    def on_btnClearWoj_clicked(self):
+        """Unchecks all checkboxes in the current tab."""
+        self.change_check_status(False)
+
+    @pyqtSlot()
+    def on_btnClearAll_clicked(self):
+        """Unchecks all checkboxes in all tabs."""
+        for qcb in self.findChildren(QCheckBox):
+            qcb.setChecked(False)
+
+    @pyqtSlot()
+    def on_btnDwnl_clicked(self):
+        """Checks parameters required for downloading data
+        and creates a task."""
+        downloadPath = self.dwnlPath.filePath()
+
+        oldSchema, bdot10kDataFormat = self.get_bdot10k_data_options()
+
+        checkBoxList = [
+            qcb.objectName()[-4:]
+            for qcb in self.findChildren(QCheckBox)
+            if qcb.isChecked()
+        ]
+
+        if check_dwnl_path(downloadPath) and checkBoxList:
+
+            self.btnDwnl.hide()
+            self.btnCancelDwnl.show()
+            self.btnCancelDwnl.setEnabled(True)
+
+            self.taskDwnl = DownloadBdotTask(
+                description="Pobieranie paczek BDOT10k",
+                downloadPath=downloadPath,
+                oldSchema=oldSchema,
+                bdot10kDataFormat=bdot10kDataFormat,
+                powiatyTerytList=checkBoxList
+            )
+
+            self.taskManager.addTask(self.taskDwnl)
+            self.taskIdDwnl = self.taskManager.taskId(self.taskDwnl)
+            self.taskManager.statusChanged.connect(self.switch_buttons)
+
+        elif not checkBoxList:
+
+            QMessageBox.critical(self, "Błąd", "Wybierz powiat(y) do pobrania BDTO10k.")

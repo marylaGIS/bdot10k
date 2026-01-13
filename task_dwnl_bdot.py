@@ -1,87 +1,135 @@
-import requests, os
-from qgis.core import (QgsApplication, QgsTask, QgsMessageLog, Qgis, 
-    QgsNetworkAccessManager)
-from PyQt5.QtCore import QUrl
-from PyQt5.QtNetwork import QNetworkRequest
+"""QGIS Task for downloading data in the background."""
+
+import os
+
+from qgis.core import Qgis, QgsMessageLog, QgsNetworkAccessManager, QgsTask
+from qgis.utils import iface
+
+from qgis.PyQt.QtCore import QUrl
+from qgis.PyQt.QtNetwork import QNetworkReply, QNetworkRequest
 
 MESSAGE_CATEGORY = "BDOT10k"
 
 
 class DownloadBdotTask(QgsTask):
-    """Subclass task for dwonloading BDOT10k"""
+    """Subclass task for dwonloading BDOT10k."""
 
-    def __init__(self, description, downloadPath, oldSchema,
-                bdot10kDataFormat, powiatyTerytList, iface):
-        super().__init__(description, QgsTask.CanCancel)
+    def __init__(self, description: str, downloadPath: str, oldSchema: bool,
+                 bdot10kDataFormat: str, powiatyTerytList: list):
+        """Constructor."""
+
+        super().__init__(description, QgsTask.Flag.CanCancel)
         self.exception = None
-        self.iface = iface
         self.downloadPath = downloadPath
         self.oldSchema = oldSchema
         self.bdot10kDataFormat = bdot10kDataFormat
         self.powiatyTerytList = powiatyTerytList
-        self.network_manager = QgsNetworkAccessManager()
+        self.networkManager = QgsNetworkAccessManager()
 
-    def run(self):
-        QgsMessageLog.logMessage(f"Rozpoczęto pobieranie BDOT10k dla: {self.powiatyTerytList}",
-                                MESSAGE_CATEGORY, Qgis.Info)
+    def run(self) -> bool:
+        """Downloads BDOT10k data based on the options
+        selected in the plugin dialog."""
+
+        QgsMessageLog.logMessage(
+            f"Lokalizacja pobierania: {self.downloadPath}",
+            MESSAGE_CATEGORY,
+            Qgis.MessageLevel.Info
+        )
+
+        QgsMessageLog.logMessage(
+            "Rozpoczęto pobieranie paczek BDOT10k powiatów o numerach TERYT: "
+            f"{self.powiatyTerytList}",
+            MESSAGE_CATEGORY,
+            Qgis.MessageLevel.Info
+        )
 
         if self.oldSchema:
-            if self.bdot10kDataFormat == 'SHP':
-                url = 'https://opendata.geoportal.gov.pl/bdot10k/SHP/{}/{}_SHP.zip'
-                bdot_zip = 'bdot10k_SHP_{}.zip'
-            elif self.bdot10kDataFormat == 'GML':
-                url = 'https://opendata.geoportal.gov.pl/bdot10k/{}/{}_GML.zip'
-                bdot_zip = 'bdot10k_GML_{}.zip'
+            if self.bdot10kDataFormat == "SHP":
+                url = "https://opendata.geoportal.gov.pl/bdot10k/SHP/{}/{}_SHP.zip"
+                bdot_zip = "bdot10k_SHP_{}.zip"
+            elif self.bdot10kDataFormat == "GML":
+                url = "https://opendata.geoportal.gov.pl/bdot10k/{}/{}_GML.zip"
+                bdot_zip = "bdot10k_GML_{}.zip"
         else:
-            if self.bdot10kDataFormat == 'GML':
-                url = 'https://opendata.geoportal.gov.pl/bdot10k/schemat2021/{}/{}_GML.zip'
-                bdot_zip = 'bdot10k_{}.zip'
-            elif self.bdot10kDataFormat == 'GPKG':
-                url = 'https://opendata.geoportal.gov.pl/bdot10k/schemat2021/GPKG/{}/{}_GPKG.zip'
-                bdot_zip = 'bdot10k_GPKG_{}.zip'
+            if self.bdot10kDataFormat == "GML":
+                url = "https://opendata.geoportal.gov.pl/bdot10k/schemat2021/{}/{}_GML.zip"
+                bdot_zip = "bdot10k_{}.zip"
+            elif self.bdot10kDataFormat == "GPKG":
+                url = "https://opendata.geoportal.gov.pl/bdot10k/schemat2021/GPKG/{}/{}_GPKG.zip"
+                bdot_zip = "bdot10k_GPKG_{}.zip"
 
         for teryt in self.powiatyTerytList:
             request = QNetworkRequest(QUrl(url.format(teryt[:2], teryt)))
-            reply = self.network_manager.blockingGet(request)
-            
-            if reply.error() == 0:  # QNetworkReply.NoError
+            reply = self.networkManager.blockingGet(request)
+
+            if reply.error() == QNetworkReply.NetworkError.NoError:
                 content = reply.content()
                 bdot_zip_path = os.path.join(self.downloadPath, bdot_zip.format(teryt))
-                with open(bdot_zip_path, 'wb') as bdot_dwnl_file:
+                with open(bdot_zip_path, "wb") as bdot_dwnl_file:
                     bdot_dwnl_file.write(content)
             else:
-                QgsMessageLog.logMessage("Błąd. Połączenie z serwerem nie powiodło się. " +
-                                        f"Treść błędu: {reply.errorString()}",
-                                        MESSAGE_CATEGORY, Qgis.Critical)
+                QgsMessageLog.logMessage(
+                    "Połączenie z serwerem nie powiodło się. "
+                    f"Treść błędu: {reply.errorString()}",
+                    MESSAGE_CATEGORY,
+                    Qgis.MessageLevel.Critical
+                )
                 return False
-            
+
             if self.isCanceled():
                 return False
 
-        # QgsTask must return boolean
         return True
 
     def finished(self, result):
+        """Logs messages based on the task result value."""
+
         if result:
-            QgsMessageLog.logMessage("Sukces. Pobrano paczki BDOT10k.",
-                                    MESSAGE_CATEGORY, Qgis.Success)
-            self.iface.messageBar().pushMessage("Sukces", "Pobrano paczki BOT10k",
-                                                level=Qgis.Success, duration=10)
+            QgsMessageLog.logMessage(
+                "Pobrano paczki BDOT10k.",
+                MESSAGE_CATEGORY,
+                Qgis.MessageLevel.Success
+            )
+
+            iface.messageBar().pushMessage(
+                "Sukces", "Pobrano paczki BOT10k.",
+                level=Qgis.MessageLevel.Success,
+                duration=10
+            )
         else:
             if self.exception is None:
-                QgsMessageLog.logMessage("Błąd. Nie otrzymano wyników.",
-                                        MESSAGE_CATEGORY, Qgis.Warning)
+                QgsMessageLog.logMessage(
+                    "Nie udało się pobrać paczek BDOT10k.",
+                    MESSAGE_CATEGORY,
+                    Qgis.MessageLevel.Warning
+                )
             else:
-                QgsMessageLog.logMessage("Błąd. Nie udało się pobrać paczek BDOT10k. \n{exception}"
-                                        .format(exception=self.exception),
-                                        MESSAGE_CATEGORY, Qgis.Critical)
+                QgsMessageLog.logMessage(
+                    "Nie udało się pobrać paczek BDOT10k.\n"
+                    f"Treść błędu: {self.exception}",
+                    MESSAGE_CATEGORY,
+                    Qgis.MessageLevel.Critical
+                )
                 raise self.exception
-            self.iface.messageBar().pushMessage("Błąd. Nie udało się pobrać paczek BDOT10k.",
-                                                level=Qgis.Critical, duration=10)
+
+            iface.messageBar().pushMessage(
+                "Błąd", "Nie udało się pobrać paczek BDOT10k.",
+                level=Qgis.MessageLevel.Critical,
+                duration=10
+            )
 
     def cancel(self):
-        QgsMessageLog.logMessage("Anulowano pobieranie.",
-                                MESSAGE_CATEGORY, Qgis.Info)
-        self.iface.messageBar().pushMessage("Stop", "Anulowano pobieranie paczek BDOT10k",
-                                            level=Qgis.Info)
+        """Cancels the running task and logs an appropriate message."""
+
+        QgsMessageLog.logMessage(
+            "Anulowano pobieranie paczek BDOT10k.",
+            MESSAGE_CATEGORY,
+            Qgis.MessageLevel.Info
+        )
+
+        iface.messageBar().pushMessage(
+            "Stop", "Anulowano pobieranie paczek BDOT10k.",
+            level=Qgis.MessageLevel.Info
+        )
+
         super().cancel()

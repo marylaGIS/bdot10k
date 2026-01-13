@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 /***************************************************************************
  BDOT10k_pluginDialog
@@ -25,14 +24,16 @@
 import os
 
 from qgis.PyQt import uic
-from qgis.PyQt import QtWidgets
+from qgis.PyQt.QtWidgets import QDialog
 
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'bdot10k_dialog_info.ui'))
 
 
-class BDOT10kDialogInfo(QtWidgets.QDialog, FORM_CLASS):
+class BDOT10kDialogInfo(QDialog, FORM_CLASS):
+    """Dialog with general information about the plugin."""
+
     def __init__(self, parent=None):
         """Constructor."""
         super(BDOT10kDialogInfo, self).__init__(parent)
